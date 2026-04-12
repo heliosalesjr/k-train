@@ -16,6 +16,7 @@ export const VOCAB_CATEGORIES = [
   'dias da semana',
   'corpo',
   'natureza',
+  'verbos básicos',
 ] as const
 
 export const VOCABULARY: VocabCard[] = [
@@ -60,10 +61,35 @@ export const VOCABULARY: VocabCard[] = [
   { id: 'c6', korean: '배고프다', romanization: 'baegoproda', portuguese: 'estar com fome', category: 'comida' },
 
   // Cores
-  { id: 'col1', korean: '빨간색', romanization: 'ppalgansaek', portuguese: 'vermelho', category: 'cores' },
-  { id: 'col2', korean: '파란색', romanization: 'paransaek', portuguese: 'azul', category: 'cores' },
-  { id: 'col3', korean: '노란색', romanization: 'noransaek', portuguese: 'amarelo', category: 'cores' },
-  { id: 'col4', korean: '초록색', romanization: 'choroksaek', portuguese: 'verde', category: 'cores' },
-  { id: 'col5', korean: '흰색', romanization: 'heunsaek', portuguese: 'branco', category: 'cores' },
-  { id: 'col6', korean: '검은색', romanization: 'geomeunsaek', portuguese: 'preto', category: 'cores' },
+  { id: 'col1',  korean: '빨간색', romanization: 'ppalgansaek',  portuguese: 'vermelho',        category: 'cores', example: { sentence: '빨간색 차가 있어요.', translation: 'Tem um carro vermelho.' } },
+  { id: 'col2',  korean: '파란색', romanization: 'paransaek',    portuguese: 'azul',            category: 'cores', example: { sentence: '하늘은 파란색이에요.', translation: 'O céu é azul.' } },
+  { id: 'col3',  korean: '노란색', romanization: 'noransaek',    portuguese: 'amarelo',         category: 'cores', example: { sentence: '바나나는 노란색이에요.', translation: 'A banana é amarela.' } },
+  { id: 'col4',  korean: '초록색', romanization: 'choroksaek',   portuguese: 'verde',           category: 'cores', example: { sentence: '나무는 초록색이에요.', translation: 'A árvore é verde.' } },
+  { id: 'col5',  korean: '흰색',   romanization: 'huinsaek',     portuguese: 'branco',          category: 'cores', example: { sentence: '눈은 흰색이에요.', translation: 'A neve é branca.' } },
+  { id: 'col6',  korean: '검은색', romanization: 'geomeunsaek',  portuguese: 'preto',           category: 'cores', example: { sentence: '고양이가 검은색이에요.', translation: 'O gato é preto.' } },
+  { id: 'col7',  korean: '주황색', romanization: 'juhwangsaek',  portuguese: 'laranja',         category: 'cores', example: { sentence: '주황색 꽃이 예뻐요.', translation: 'A flor laranja é bonita.' } },
+  { id: 'col8',  korean: '분홍색', romanization: 'bunhongsaek',  portuguese: 'rosa',            category: 'cores', example: { sentence: '분홍색을 좋아해요.', translation: 'Eu gosto de rosa.' } },
+  { id: 'col9',  korean: '보라색', romanization: 'borasaek',     portuguese: 'roxo / violeta',  category: 'cores', example: { sentence: '보라색 포도예요.', translation: 'São uvas roxas.' } },
+  { id: 'col10', korean: '갈색',   romanization: 'galsaek',      portuguese: 'marrom',          category: 'cores', example: { sentence: '곰은 갈색이에요.', translation: 'O urso é marrom.' } },
+  { id: 'col11', korean: '회색',   romanization: 'hoesaek',      portuguese: 'cinza',           category: 'cores', example: { sentence: '하늘이 회색이에요.', translation: 'O céu está cinza.' } },
+  { id: 'col12', korean: '금색',   romanization: 'geumsaek',     portuguese: 'dourado',         category: 'cores' },
+  { id: 'col13', korean: '은색',   romanization: 'eunsaek',      portuguese: 'prateado',        category: 'cores' },
+  { id: 'col14', korean: '하늘색', romanization: 'haneulsaek',   portuguese: 'azul-céu / celeste', category: 'cores', example: { sentence: '하늘색 티셔츠 입었어요.', translation: 'Vesti uma camiseta azul-céu.' } },
+  { id: 'col15', korean: '남색',   romanization: 'namsaek',      portuguese: 'azul-marinho / índigo', category: 'cores' },
+  { id: 'col16', korean: '색',     romanization: 'saek',         portuguese: 'cor (sufixo)',    category: 'cores', example: { sentence: '무슨 색이에요?', translation: 'Qual cor é?' } },
+
+  // Dias da semana
+  { id: 'dia0',  korean: '일요일', romanization: 'ilyoil',    portuguese: 'domingo',     category: 'dias da semana', example: { sentence: '일요일에 쉬어요.', translation: 'Descanso no domingo.' } },
+  { id: 'dia1',  korean: '월요일', romanization: 'woryoil',   portuguese: 'segunda-feira', category: 'dias da semana', example: { sentence: '월요일은 바빠요.', translation: 'Segunda-feira é agitada.' } },
+  { id: 'dia2',  korean: '화요일', romanization: 'hwayoil',   portuguese: 'terça-feira',  category: 'dias da semana', example: { sentence: '화요일에 학교에 가요.', translation: 'Na terça vou à escola.' } },
+  { id: 'dia3',  korean: '수요일', romanization: 'suyoil',    portuguese: 'quarta-feira', category: 'dias da semana', example: { sentence: '수요일에 만나요.', translation: 'Nos encontramos na quarta.' } },
+  { id: 'dia4',  korean: '목요일', romanization: 'mogyoil',   portuguese: 'quinta-feira', category: 'dias da semana' },
+  { id: 'dia5',  korean: '금요일', romanization: 'geumyoil',  portuguese: 'sexta-feira',  category: 'dias da semana', example: { sentence: '금요일 저녁이 좋아요.', translation: 'Gosto da noite de sexta.' } },
+  { id: 'dia6',  korean: '토요일', romanization: 'toyoil',    portuguese: 'sábado',       category: 'dias da semana', example: { sentence: '토요일에 영화 봐요.', translation: 'Vejo filmes no sábado.' } },
+  { id: 'dia7',  korean: '요일',   romanization: 'yoil',      portuguese: 'dia da semana (sufixo)', category: 'dias da semana', example: { sentence: '오늘 무슨 요일이에요?', translation: 'Que dia da semana é hoje?' } },
+  { id: 'dia8',  korean: '오늘',   romanization: 'oneul',     portuguese: 'hoje',         category: 'dias da semana', example: { sentence: '오늘은 화요일이에요.', translation: 'Hoje é terça-feira.' } },
+  { id: 'dia9',  korean: '내일',   romanization: 'naeil',     portuguese: 'amanhã',       category: 'dias da semana', example: { sentence: '내일 봐요!', translation: 'Até amanhã!' } },
+  { id: 'dia10', korean: '어제',   romanization: 'eoje',      portuguese: 'ontem',        category: 'dias da semana', example: { sentence: '어제 뭐 했어요?', translation: 'O que você fez ontem?' } },
+  { id: 'dia11', korean: '주말',   romanization: 'jumal',     portuguese: 'fim de semana', category: 'dias da semana', example: { sentence: '주말에 뭐 해요?', translation: 'O que você faz no fim de semana?' } },
+  { id: 'dia12', korean: '주',     romanization: 'ju',        portuguese: 'semana',       category: 'dias da semana', example: { sentence: '이번 주에 바빠요.', translation: 'Estou ocupado esta semana.' } },
 ]
