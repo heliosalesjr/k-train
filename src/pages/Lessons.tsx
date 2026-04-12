@@ -79,15 +79,18 @@ function Block({ block }: { block: ContentBlock }) {
         <div className="space-y-2">
           {block.items.map((item, i) => (
             <div key={i} className="flex items-center gap-3 bg-slate-700/30 rounded-xl px-4 py-3">
-              <button
-                onClick={() => hasKoreanVoice && speak(item.korean)}
-                className={`text-2xl font-bold text-white min-w-[6rem] text-left ${hasKoreanVoice ? 'hover:text-violet-300 transition-colors cursor-pointer' : ''}`}
-              >
-                {item.korean}
-              </button>
+              <span className="text-2xl font-bold text-white min-w-[6rem]">{item.korean}</span>
               <span className="text-violet-400 font-mono text-sm w-28">{item.romanization}</span>
               <span className="text-slate-300 text-sm">{item.portuguese}</span>
-              {hasKoreanVoice && <span className="ml-auto text-slate-600 text-xs">🔊</span>}
+              {hasKoreanVoice && (
+                <button
+                  onClick={() => speak(item.korean)}
+                  className="ml-auto text-slate-500 hover:text-violet-400 transition-colors text-base"
+                  title="Ouvir"
+                >
+                  🔊
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -97,17 +100,24 @@ function Block({ block }: { block: ContentBlock }) {
       return (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {block.items.map((item, i) => (
-            <button
-              key={i}
-              onClick={() => hasKoreanVoice && speak(item.char + '요일')}
-              className="bg-slate-800 border border-slate-700 hover:border-slate-500 rounded-xl p-4 text-left transition-colors group"
-            >
-              <div className={`text-4xl font-bold mb-2 ${item.color ?? 'text-white'}`}>
-                {item.char}
+            <div key={i} className="bg-slate-800 border border-slate-700 rounded-xl p-4 text-left">
+              <div className="flex items-start justify-between mb-2">
+                <div className={`text-4xl font-bold ${item.color ?? 'text-white'}`}>
+                  {item.char}
+                </div>
+                {hasKoreanVoice && (
+                  <button
+                    onClick={() => speak(item.char + '요일')}
+                    className="text-slate-600 hover:text-violet-400 transition-colors text-sm mt-1"
+                    title="Ouvir"
+                  >
+                    🔊
+                  </button>
+                )}
               </div>
               <div className="text-slate-300 text-sm font-medium leading-snug">{item.label}</div>
               <div className="text-slate-500 text-xs mt-1">{item.detail}</div>
-            </button>
+            </div>
           ))}
         </div>
       )
