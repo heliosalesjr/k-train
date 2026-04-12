@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { VOCABULARY, VOCAB_CATEGORIES, type VocabCard } from '../data/vocabulary'
 import { useSpeech } from '../hooks/useSpeech'
 import { loadProgress, updateCardProgress } from '../store/progress'
+import NoVoiceBanner from '../components/NoVoiceBanner'
 
 function VocabCardItem({ card }: { card: VocabCard }) {
-  const { speak, isSupported } = useSpeech()
+  const { speak, isSupported, hasKoreanVoice } = useSpeech()
   const [flipped, setFlipped] = useState(false)
   const progress = loadProgress()
   const cardProgress = progress.cards[card.id]
@@ -35,7 +36,7 @@ function VocabCardItem({ card }: { card: VocabCard }) {
                 {cardProgress.repetitions}x
               </span>
             )}
-            {isSupported && (
+            {isSupported && hasKoreanVoice && (
               <button
                 onClick={e => { e.stopPropagation(); speak(card.korean) }}
                 className="text-slate-500 hover:text-violet-400 transition-colors text-xl"
@@ -90,6 +91,7 @@ function VocabCardItem({ card }: { card: VocabCard }) {
 
 export default function Vocabulary() {
   const [category, setCategory] = useState<string>('saudações')
+  const { hasKoreanVoice, voicesLoading } = useSpeech()
 
   const filtered = VOCABULARY.filter(v => v.category === category)
 
@@ -99,6 +101,8 @@ export default function Vocabulary() {
         <h1 className="text-3xl font-bold text-white mb-1">어휘 — Vocabulário</h1>
         <p className="text-slate-400">Clique em uma palavra para ver a tradução. Avalie para treinar.</p>
       </div>
+
+      {!voicesLoading && !hasKoreanVoice && <NoVoiceBanner />}
 
       <div className="flex flex-wrap gap-2">
         {VOCAB_CATEGORIES.map(cat => (
