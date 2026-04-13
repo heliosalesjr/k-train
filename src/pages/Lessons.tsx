@@ -121,6 +121,36 @@ function Block({ block }: { block: ContentBlock }) {
           ))}
         </div>
       )
+
+    case 'pattern':
+      return (
+        <div className="border border-violet-700/40 rounded-xl overflow-hidden">
+          <div className="bg-violet-950/50 px-4 py-2 flex items-center gap-2">
+            <span className="text-violet-400 text-xs font-semibold uppercase tracking-wide">{block.label}</span>
+            <span
+              className="text-slate-200 font-mono text-sm"
+              dangerouslySetInnerHTML={{ __html: block.formula }}
+            />
+          </div>
+          <div className="divide-y divide-slate-700/40">
+            {block.examples.map((ex, i) => (
+              <div key={i} className="flex items-center gap-3 px-4 py-2.5">
+                <button
+                  onClick={() => hasKoreanVoice && speak(ex.korean)}
+                  className={`text-lg font-bold text-white min-w-[10rem] text-left ${hasKoreanVoice ? 'hover:text-violet-300 transition-colors' : ''}`}
+                >
+                  {ex.korean}
+                </button>
+                <span className="text-violet-400 font-mono text-xs w-32 shrink-0">{ex.romanization}</span>
+                <span className="text-slate-400 text-sm">{ex.portuguese}</span>
+                {hasKoreanVoice && (
+                  <button onClick={() => speak(ex.korean)} className="ml-auto text-slate-600 hover:text-violet-400 transition-colors shrink-0">🔊</button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
   }
 }
 
