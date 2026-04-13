@@ -32,7 +32,7 @@ const modules = [
     title: '수업 (Lições)',
     desc: 'Lições estruturadas de gramática e frases essenciais.',
     color: 'from-amber-600 to-amber-800',
-    tag: 'Em breve',
+    tag: null,
   },
 ]
 

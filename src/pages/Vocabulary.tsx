@@ -89,11 +89,23 @@ function VocabCardItem({ card }: { card: VocabCard }) {
   )
 }
 
+const CATEGORY_NOTES: Partial<Record<string, { title: string; content: string }>> = {
+  números: {
+    title: 'Dois sistemas de numeração',
+    content:
+      'O coreano tem <strong>dois sistemas de números</strong> que convivem no dia a dia — e cada um tem seus contextos específicos.<br/><br/>' +
+      '<strong>Sino-coreano</strong> (일 이 삼 사…): originado do chinês. Usado para datas, preços, números de telefone, minutos, andares, e contagens grandes.<br/><br/>' +
+      '<strong>Nativo coreano</strong> (하나 둘 셋 넷…): a forma original da língua. Usado para contar objetos com contadores (1 copo, 2 pessoas…), horas do relógio, e números até 99 em contextos informais.<br/><br/>' +
+      'Exemplo prático: "2 horas e 30 minutos" = <strong>두</strong> 시 <strong>삼십</strong> 분 — hora em nativo (두), minutos em sino-coreano (삼십).',
+  },
+}
+
 export default function Vocabulary() {
   const [category, setCategory] = useState<string>('saudações')
   const { hasKoreanVoice, voicesLoading } = useSpeech()
 
   const filtered = VOCABULARY.filter(v => v.category === category)
+  const note = CATEGORY_NOTES[category]
 
   return (
     <div className="space-y-6">
@@ -119,6 +131,16 @@ export default function Vocabulary() {
           </button>
         ))}
       </div>
+
+      {note && (
+        <div className="bg-sky-950/40 border border-sky-700/40 rounded-xl p-4 space-y-1">
+          <div className="text-sky-300 font-semibold text-sm">💡 {note.title}</div>
+          <p
+            className="text-slate-300 text-sm leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: note.content }}
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {filtered.map(card => (
