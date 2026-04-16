@@ -11,6 +11,7 @@ export interface CardProgress {
 export interface ProgressStore {
   cards: Record<string, CardProgress>
   completedLessons: string[]
+  dailyBadges: string[] // datas YYYY-MM-DD em que o usuário ganhou badge de prática
 }
 
 const STORAGE_KEY = 'k-train-progress'
@@ -18,9 +19,16 @@ const STORAGE_KEY = 'k-train-progress'
 export function loadProgress(): ProgressStore {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      return {
+        cards: parsed.cards ?? {},
+        completedLessons: parsed.completedLessons ?? [],
+        dailyBadges: parsed.dailyBadges ?? [],
+      }
+    }
   } catch {}
-  return { cards: {}, completedLessons: [] }
+  return { cards: {}, completedLessons: [], dailyBadges: [] }
 }
 
 export function saveProgress(store: ProgressStore) {
@@ -71,6 +79,19 @@ export function updateCardProgress(
   }
   saveProgress(newStore)
   return newStore
+}
+
+export function awardDailyBadge(store: ProgressStore): ProgressStore {
+  const today = new Date().toISOString().slice(0, 10)
+  if (store.dailyBadges.includes(today)) return store
+  const newStore = { ...store, dailyBadges: [...store.dailyBadges, today] }
+  saveProgress(newStore)
+  return newStore
+}
+
+export function hasDailyBadge(store: ProgressStore): boolean {
+  const today = new Date().toISOString().slice(0, 10)
+  return store.dailyBadges.includes(today)
 }
 
 export function isDue(card: CardProgress): boolean {

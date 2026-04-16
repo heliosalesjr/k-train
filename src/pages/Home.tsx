@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { loadProgress } from '../store/progress'
+import { hasDailyBadge, loadProgress } from '../store/progress'
 
 const modules = [
   {
@@ -34,23 +34,40 @@ const modules = [
     color: 'from-amber-600 to-amber-800',
     tag: null,
   },
+  {
+    to: '/quiz',
+    emoji: '🎧',
+    title: '퀴즈 (Quiz)',
+    desc: 'Teste seu ouvido: ouça sons e identifique os caracteres Hangul.',
+    color: 'from-rose-600 to-rose-800',
+    tag: 'Novo',
+  },
 ]
 
 export default function Home() {
   const progress = loadProgress()
   const cardsStudied = Object.keys(progress.cards).length
+  const hasBadgeToday = hasDailyBadge(progress)
 
   return (
     <div className="space-y-8">
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-bold text-white">안녕하세요!</h1>
         <p className="text-slate-400 text-lg">Bem-vindo ao k-train. Vamos aprender coreano.</p>
-        {cardsStudied > 0 && (
-          <div className="inline-flex items-center gap-2 bg-violet-900/40 border border-violet-700/50 rounded-full px-4 py-1.5 text-sm text-violet-300 mt-2">
-            <span>🔥</span>
-            <span>{cardsStudied} {cardsStudied === 1 ? 'carta estudada' : 'cartas estudadas'}</span>
-          </div>
-        )}
+        <div className="flex flex-wrap justify-center gap-2 mt-2">
+          {cardsStudied > 0 && (
+            <div className="inline-flex items-center gap-2 bg-violet-900/40 border border-violet-700/50 rounded-full px-4 py-1.5 text-sm text-violet-300">
+              <span>🔥</span>
+              <span>{cardsStudied} {cardsStudied === 1 ? 'carta estudada' : 'cartas estudadas'}</span>
+            </div>
+          )}
+          {hasBadgeToday && (
+            <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 rounded-full px-4 py-1.5 text-sm text-yellow-300">
+              <span>🏅</span>
+              <span>Prática do dia completa!</span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
