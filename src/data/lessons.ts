@@ -422,6 +422,234 @@ export const LESSONS: Lesson[] = [
     ],
   },
 
+  // ─── Lição: Números ───────────────────────────────────────────────
+  {
+    id: 'numbers',
+    title: 'Números',
+    titleKorean: '숫자',
+    description: 'O coreano tem dois sistemas de contagem — sino-coreano e nativo. Aprenda quando e como usar cada um.',
+    level: 'iniciante',
+    sections: [
+      {
+        title: 'Dois sistemas de números',
+        blocks: [
+          {
+            type: 'text',
+            content: 'Ao contrário do português, o coreano possui <strong>dois sistemas de numerais distintos</strong>: os <strong>sino-coreanos</strong> (sino = de origem chinesa) e os <strong>nativos coreanos</strong>. Cada sistema é usado em contextos diferentes, e você precisa saber os dois.',
+          },
+          {
+            type: 'table',
+            headers: ['Sistema', 'Origem', 'Usado para'],
+            rows: [
+              ['Sino-coreano (한자어)', 'Chinês', 'Datas, dinheiro, telefone, minutos, andares, meses'],
+              ['Nativo (순우리말)', 'Coreano puro', 'Contar objetos, horas, idade, semanas'],
+            ],
+          },
+          {
+            type: 'tip',
+            title: 'Por onde começar?',
+            content: 'Aprenda os sino-coreanos primeiro — eles cobrem mais situações práticas (preços, datas, números de telefone) e seguem um padrão mais simples e regular.',
+          },
+        ],
+      },
+      {
+        title: 'Números sino-coreanos (1–10)',
+        blocks: [
+          {
+            type: 'text',
+            content: 'Os números sino-coreanos são regulares e combináveis — iguais à lógica do chinês e japonês. Memorize os de 1 a 10 e você consegue chegar aos milhares.',
+          },
+          {
+            type: 'vocab-highlight',
+            items: [
+              { char: '일', label: '1 — il',  detail: '이 il',   color: 'text-violet-300' },
+              { char: '이', label: '2 — i',   detail: '이 i',    color: 'text-violet-300' },
+              { char: '삼', label: '3 — sam', detail: '삼 sam',  color: 'text-violet-300' },
+              { char: '사', label: '4 — sa',  detail: '사 sa',   color: 'text-violet-300' },
+              { char: '오', label: '5 — o',   detail: '오 o',    color: 'text-violet-300' },
+              { char: '육', label: '6 — yuk', detail: '육 yuk',  color: 'text-violet-300' },
+              { char: '칠', label: '7 — chil',detail: '칠 chil', color: 'text-violet-300' },
+              { char: '팔', label: '8 — pal', detail: '팔 pal',  color: 'text-violet-300' },
+              { char: '구', label: '9 — gu',  detail: '구 gu',   color: 'text-violet-300' },
+              { char: '십', label: '10 — sip',detail: '십 sip',  color: 'text-sky-300' },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Sino-coreanos: dezenas, centenas e milhares',
+        blocks: [
+          {
+            type: 'text',
+            content: 'A lógica é multiplicativa — você combina os números básicos com as unidades. <strong>십(10), 백(100), 천(1.000), 만(10.000)</strong>.',
+          },
+          {
+            type: 'table',
+            headers: ['Número', 'Coreano', 'Lógica'],
+            rows: [
+              ['10',    '십',    '십'],
+              ['11',    '십일',  '십 + 일 (10 + 1)'],
+              ['20',    '이십',  '이 + 십 (2 × 10)'],
+              ['35',    '삼십오', '삼십 + 오 (30 + 5)'],
+              ['100',   '백',    '백'],
+              ['200',   '이백',  '이 + 백 (2 × 100)'],
+              ['1.000', '천',    '천'],
+              ['5.000', '오천',  '오 + 천 (5 × 1.000)'],
+              ['10.000','만',    '만 (unidade única no coreano)'],
+              ['50.000','오만',  '오 + 만 (5 × 10.000)'],
+            ],
+          },
+          {
+            type: 'warning',
+            title: 'Atenção: 만 (10.000)',
+            content: 'O coreano (assim como o chinês e japonês) conta em grupos de <strong>10.000</strong>, não de 1.000. Então "100.000" é <strong>십만</strong> (10 × 10.000), e "1.000.000" é <strong>백만</strong> (100 × 10.000). Isso confunde muito falantes de português — tome cuidado com preços altos!',
+          },
+          {
+            type: 'tip',
+            title: '일 antes de 백 e 천',
+            content: 'Em coreano, "100" é apenas <strong>백</strong>, não 일백. "1.000" é apenas <strong>천</strong>, não 일천. O 일 só aparece de forma explícita em valores compostos como 일만 (10.000), onde omiti-lo causaria ambiguidade.',
+          },
+        ],
+      },
+      {
+        title: 'Números nativos coreanos (1–10)',
+        blocks: [
+          {
+            type: 'text',
+            content: 'Os números nativos têm formas únicas e irregulares — precisam ser memorizados individualmente. Eles são usados para contar objetos e pessoas com contadores (palavras de medida), e para dizer as horas.',
+          },
+          {
+            type: 'vocab-highlight',
+            items: [
+              { char: '하나', label: '1 — hana',   detail: '→ 한 antes de contador', color: 'text-emerald-300' },
+              { char: '둘',   label: '2 — dul',    detail: '→ 두 antes de contador',  color: 'text-emerald-300' },
+              { char: '셋',   label: '3 — set',    detail: '→ 세 antes de contador',  color: 'text-emerald-300' },
+              { char: '넷',   label: '4 — net',    detail: '→ 네 antes de contador',  color: 'text-emerald-300' },
+              { char: '다섯', label: '5 — daseot',  detail: '',                        color: 'text-emerald-300' },
+              { char: '여섯', label: '6 — yeoseot', detail: '',                        color: 'text-emerald-300' },
+              { char: '일곱', label: '7 — ilgop',   detail: '',                        color: 'text-emerald-300' },
+              { char: '여덟', label: '8 — yeodeol',  detail: '',                       color: 'text-emerald-300' },
+              { char: '아홉', label: '9 — ahop',    detail: '',                        color: 'text-emerald-300' },
+              { char: '열',   label: '10 — yeol',   detail: '→ 스물(20), 서른(30)…',   color: 'text-sky-300' },
+            ],
+          },
+          {
+            type: 'table',
+            headers: ['Dezena', 'Coreano nativo', 'Romanização'],
+            rows: [
+              ['10', '열',   'yeol'],
+              ['20', '스물', 'seumul → 스무 antes de contador'],
+              ['30', '서른', 'seoreun'],
+              ['40', '마흔', 'maheun'],
+              ['50', '쉰',   'swin'],
+              ['60', '예순', 'yesun'],
+              ['70', '일흔', 'ilheun'],
+              ['80', '여든', 'yeodeun'],
+              ['90', '아흔', 'aheun'],
+            ],
+          },
+          {
+            type: 'warning',
+            title: 'Números nativos só vão até 99',
+            content: 'O sistema nativo não tem equivalente para 100 em diante. A partir de 100, usa-se sempre o sistema sino-coreano. Na prática, os nativos são mais comuns apenas de 1 a 99.',
+          },
+        ],
+      },
+      {
+        title: 'Contadores — o que muda antes de 개, 명, 잔…',
+        blocks: [
+          {
+            type: 'text',
+            content: 'Quando você usa números nativos para contar objetos, coloca um <strong>contador</strong> (palavra de medida) depois do número. Os números <strong>1, 2, 3, 4 e 20</strong> têm formas reduzidas antes de qualquer contador.',
+          },
+          {
+            type: 'table',
+            headers: ['Número', 'Forma isolada', 'Antes de contador'],
+            rows: [
+              ['1', '하나', '한'],
+              ['2', '둘',   '두'],
+              ['3', '셋',   '세'],
+              ['4', '넷',   '네'],
+              ['20','스물', '스무'],
+            ],
+          },
+          {
+            type: 'text',
+            content: 'Os contadores mais comuns que você vai encontrar:',
+          },
+          {
+            type: 'example-list',
+            items: [
+              { korean: '개', romanization: 'gae', portuguese: 'objetos genéricos (coisa)' },
+              { korean: '명', romanization: 'myeong', portuguese: 'pessoas' },
+              { korean: '잔', romanization: 'jan', portuguese: 'copos / xícaras' },
+              { korean: '권', romanization: 'gwon', portuguese: 'livros' },
+              { korean: '번', romanization: 'beon', portuguese: 'vezes / número ordinal' },
+              { korean: '살', romanization: 'sal', portuguese: 'anos de idade' },
+            ],
+          },
+          {
+            type: 'table',
+            headers: ['Coreano', 'Romanização', 'Português'],
+            rows: [
+              ['사과 두 개',   'sagwa du gae',       '2 maçãs'],
+              ['학생 세 명',   'haksaeng se myeong', '3 alunos'],
+              ['커피 한 잔',   'keopi han jan',      '1 xícara de café'],
+              ['책 다섯 권',   'chaek daseot gwon',  '5 livros'],
+              ['저는 스물다섯 살이에요.', 'jeoneun seumuldaseot sar-ieyo.', 'Tenho 25 anos.'],
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Horas (nativo) e Minutos (sino)',
+        blocks: [
+          {
+            type: 'text',
+            content: 'Para dizer a hora em coreano, você usa os <strong>dois sistemas juntos</strong>: horas com números nativos + 시 (si), e minutos com números sino-coreanos + 분 (bun).',
+          },
+          {
+            type: 'pattern',
+            label: 'Fórmula',
+            formula: '[nativo] 시 [sino-coreano] 분',
+            examples: [
+              { korean: '두 시',         romanization: 'du si',          portuguese: '2 horas (em ponto)' },
+              { korean: '세 시 삼십 분', romanization: 'se si samsip bun', portuguese: '3h30' },
+              { korean: '열두 시 오 분', romanization: 'yeoldu si o bun', portuguese: '12h05' },
+              { korean: '몇 시예요?',    romanization: 'myeot siyeyo?',   portuguese: 'Que horas são?' },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Quando usar cada sistema',
+        blocks: [
+          {
+            type: 'table',
+            headers: ['Contexto', 'Sistema', 'Exemplo'],
+            rows: [
+              ['Horas',          'Nativo',        '세 시 (3h)'],
+              ['Minutos',        'Sino-coreano',  '십오 분 (15 min)'],
+              ['Idade',          'Nativo + 살',   '스물두 살 (22 anos)'],
+              ['Dinheiro',       'Sino-coreano',  '오천 원 (₩5.000)'],
+              ['Meses',          'Sino-coreano + 월', '삼월 (março)'],
+              ['Dias do mês',    'Sino-coreano + 일', '이십일 일 (dia 21)'],
+              ['Andares',        'Sino-coreano + 층', '삼 층 (3º andar)'],
+              ['Contar objetos', 'Nativo + contador', '사과 한 개 (1 maçã)'],
+              ['Telefone',       'Sino-coreano',  '공일공 (010…)'],
+              ['Anos',           'Sino-coreano + 년', '이천이십육 년 (2026)'],
+            ],
+          },
+          {
+            type: 'tip',
+            title: 'Zero no telefone',
+            content: 'Para o número 0 em contextos sino-coreanos (telefone, endereço), usa-se <strong>공</strong> (gong) no lugar de 영 (yeong). Ambos significam zero, mas 공 é o padrão em sequências numéricas.',
+          },
+        ],
+      },
+    ],
+  },
+
   // ─── Lição 4: Verbos no presente ──────────────────────────────────
   {
     id: 'present-tense',
