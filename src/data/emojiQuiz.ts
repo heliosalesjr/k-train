@@ -54,4 +54,51 @@ export const EMOJI_WORDS: EmojiWord[] = [
   // Família
   { id: 'em_eomeoni',  korean: '어머니', emoji: '👩' },
   { id: 'em_abeoji',   korean: '아버지', emoji: '👨' },
+
+  // Comida & bebida (adicionais)
+  { id: 'em_banana',   korean: '바나나',   emoji: '🍌' },
+  { id: 'em_subak',    korean: '수박',     emoji: '🍉' },
+  { id: 'em_dalgi',    korean: '딸기',     emoji: '🍓' },
+  { id: 'em_podo',     korean: '포도',     emoji: '🍇' },
+  { id: 'em_gyeran',   korean: '계란',     emoji: '🥚' },
+  { id: 'em_chikin',   korean: '치킨',     emoji: '🍗' },
+  { id: 'em_choco',    korean: '초콜릿',   emoji: '🍫' },
+  { id: 'em_aiseu',    korean: '아이스크림', emoji: '🍦' },
+  { id: 'em_uyu',      korean: '우유',     emoji: '🥛' },
+  { id: 'em_maekju',   korean: '맥주',     emoji: '🍺' },
+
+  // Animais (adicionais)
+  { id: 'em_tokki',    korean: '토끼',     emoji: '🐰' },
+  { id: 'em_gom',      korean: '곰',       emoji: '🐻' },
+  { id: 'em_horangi',  korean: '호랑이',   emoji: '🐯' },
+  { id: 'em_kokkiri',  korean: '코끼리',   emoji: '🐘' },
+  { id: 'em_wonsungyi',korean: '원숭이',   emoji: '🐒' },
+  { id: 'em_dwaeji',   korean: '돼지',     emoji: '🐷' },
+  { id: 'em_so',       korean: '소',       emoji: '🐄' },
+  { id: 'em_dak',      korean: '닭',       emoji: '🐔' },
+
+  // Transporte & objetos
+  { id: 'em_bihaenggi',korean: '비행기',   emoji: '✈️' },
+  { id: 'em_gicha',    korean: '기차',     emoji: '🚂' },
+  { id: 'em_jajeongeo',korean: '자전거',   emoji: '🚲' },
+  { id: 'em_beoseu',   korean: '버스',     emoji: '🚌' },
+  { id: 'em_bae',      korean: '배',       emoji: '🚢' },
+  { id: 'em_sigye',    korean: '시계',     emoji: '⏰' },
+  { id: 'em_gabang',   korean: '가방',     emoji: '👜' },
+  { id: 'em_usan',     korean: '우산',     emoji: '☂️' },
+  { id: 'em_gong',     korean: '공',       emoji: '⚽' },
+  { id: 'em_yeolsoe',  korean: '열쇠',     emoji: '🔑' },
+
+  // Natureza & clima
+  { id: 'em_bi',       korean: '비',       emoji: '🌧️' },
+  { id: 'em_gureum',   korean: '구름',     emoji: '☁️' },
+  { id: 'em_bul',      korean: '불',       emoji: '🔥' },
+  { id: 'em_byeol',    korean: '별',       emoji: '⭐' },
+
+  // Misc
+  { id: 'em_eumak',    korean: '음악',     emoji: '🎵' },
+  { id: 'em_yeonghwa', korean: '영화',     emoji: '🎬' },
+  { id: 'em_don',      korean: '돈',       emoji: '💰' },
+  { id: 'em_sarang',   korean: '사랑',     emoji: '❤️' },
+  { id: 'em_saengil',  korean: '생일',     emoji: '🎉' },
 ]
