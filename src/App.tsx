@@ -6,6 +6,8 @@ import Vocabulary from './pages/Vocabulary'
 import Flashcards from './pages/Flashcards'
 import Lessons from './pages/Lessons'
 import Quiz from './pages/Quiz'
+import QuizVowels from './pages/QuizVowels'
+import QuizWords from './pages/QuizWords'
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
           <Route path="flashcards" element={<Flashcards />} />
           <Route path="lessons" element={<Lessons />} />
           <Route path="quiz" element={<Quiz />} />
+          <Route path="quiz/vogais" element={<QuizVowels />} />
+          <Route path="quiz/palavras" element={<QuizWords />} />
         </Route>
       </Routes>
     </BrowserRouter>
