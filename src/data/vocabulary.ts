@@ -130,4 +130,25 @@ export const VOCABULARY: VocabCard[] = [
   { id: 'cot4',  korean: '개',     romanization: 'gae',      portuguese: 'cachorro',  category: 'cotidiano' },
   { id: 'cot5',  korean: '고양이', romanization: 'goyangi',  portuguese: 'gato',      category: 'cotidiano' },
   { id: 'cot6',  korean: '사람',   romanization: 'saram',    portuguese: 'pessoa',    category: 'cotidiano' },
+  { id: 'cot7',  korean: '아침',   romanization: 'achim',    portuguese: 'manhã',     category: 'cotidiano' },
+  { id: 'cot8',  korean: '점심',   romanization: 'jeomsim',  portuguese: 'almoço',    category: 'cotidiano' },
+  { id: 'cot9',  korean: '저녁',   romanization: 'jeonyeok', portuguese: 'noite',     category: 'cotidiano' },
+  { id: 'cot10', korean: '시간',   romanization: 'sigan',    portuguese: 'tempo',     category: 'cotidiano' },
+  { id: 'cot11', korean: '차',     romanization: 'cha',      portuguese: 'carro',     category: 'cotidiano' },
+  { id: 'cot12', korean: '문',     romanization: 'mun',      portuguese: 'porta',     category: 'cotidiano' },
+  { id: 'cot13', korean: '병원',   romanization: 'byeongwon', portuguese: 'hospital', category: 'cotidiano' },
+  { id: 'cot14', korean: '식당',   romanization: 'sikdang',  portuguese: 'restaurante', category: 'cotidiano' },
+
+  // Comida (adicionais)
+  { id: 'c7',    korean: '커피',   romanization: 'keopi',    portuguese: 'café',      category: 'comida' },
+  { id: 'c8',    korean: '빵',     romanization: 'ppang',    portuguese: 'pão',       category: 'comida' },
+  { id: 'c9',    korean: '과일',   romanization: 'gwail',    portuguese: 'fruta',     category: 'comida' },
+
+  // Verbos básicos (adicionais)
+  { id: 'vb10',  korean: '먹다',   romanization: 'meokda',   portuguese: 'comer',     category: 'verbos básicos' },
+  { id: 'vb11',  korean: '마시다', romanization: 'masida',   portuguese: 'beber',     category: 'verbos básicos' },
+  { id: 'vb12',  korean: '좋아하다', romanization: 'joahada', portuguese: 'gostar',   category: 'verbos básicos' },
+
+  // Natureza (adicionais)
+  { id: 'nat8',  korean: '새',     romanization: 'sae',      portuguese: 'pássaro',   category: 'natureza' },
 ]
