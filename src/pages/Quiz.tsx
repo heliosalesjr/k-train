@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { VOWELS } from '../data/hangul'
 import { useSpeech } from '../hooks/useSpeech'
 import { awardDailyBadge, hasDailyBadge, loadProgress } from '../store/progress'
@@ -16,24 +16,51 @@ function makeQuestion(exclude?: string): Question {
   const correctIdx = Math.floor(Math.random() * pool.length)
   const correct = pool[correctIdx]
 
-  // Avoid repeating same vowel twice in a row if possible
   if (exclude && pool.length > 1 && correct.char === exclude) {
     return makeQuestion(exclude)
   }
 
   pool.splice(correctIdx, 1)
-  // Pick 2 unique wrong options
   const wrongs: (typeof BASIC_VOWELS)[0][] = []
   while (wrongs.length < 2) {
     const idx = Math.floor(Math.random() * pool.length)
     wrongs.push(pool.splice(idx, 1)[0])
   }
 
-  const options = [correct, ...wrongs].sort(() => Math.random() - 0.5)
-  return { correct, options }
+  return { correct, options: [correct, ...wrongs].sort(() => Math.random() - 0.5) }
 }
 
-type Phase = 'idle' | 'question' | 'correct' | 'wrong' | 'complete'
+function playPlim() {
+  try {
+    const ctx = new AudioContext()
+
+    const note = (freq: number, start: number, duration: number, volume = 0.25) => {
+      const osc = ctx.createOscillator()
+      const gain = ctx.createGain()
+      osc.connect(gain)
+      gain.connect(ctx.destination)
+      osc.type = 'sine'
+      osc.frequency.value = freq
+      gain.gain.setValueAtTime(0, ctx.currentTime + start)
+      gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + start + 0.01)
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration)
+      osc.start(ctx.currentTime + start)
+      osc.stop(ctx.currentTime + start + duration)
+    }
+
+    note(880,  0,    0.22) // A5
+    note(1318, 0.12, 0.35) // E6
+  } catch {}
+}
+
+// Phases:
+// idle      → tela inicial
+// question  → aguardando resposta
+// answering → TTS da vogal clicada tocando (botões bloqueados)
+// correct   → acertou, plim tocou, aguardando auto-avanço
+// wrong     → errou, mostra explicação + botão "próxima vogal"
+// complete  → 10 pontos, badge
+type Phase = 'idle' | 'question' | 'answering' | 'correct' | 'wrong' | 'complete'
 
 export default function Quiz() {
   const { speak, hasKoreanVoice, voicesLoading } = useSpeech()
@@ -50,7 +77,6 @@ export default function Quiz() {
     setQuestion(q)
     setSelected(null)
     setPhase('question')
-    // small delay so TTS fires after render
     setTimeout(() => speak(q.correct.char), 150)
   }, [speak])
 
@@ -64,31 +90,33 @@ export default function Quiz() {
   function handleAnswer(char: string) {
     if (phase !== 'question' || !question) return
     setSelected(char)
+    setPhase('answering')
+
+    // 1. Speak the chosen vowel
+    speak(char)
+
     const isCorrect = char === question.correct.char
 
-    if (isCorrect) {
-      const newScore = score + 1
-      setScore(newScore)
-      setPhase('correct')
+    // 2. After TTS finishes (~700ms), show result
+    setTimeout(() => {
+      if (isCorrect) {
+        const newScore = score + 1
+        setScore(newScore)
+        setPhase('correct')
+        playPlim()
 
-      if (newScore >= TARGET_SCORE) {
-        awardDailyBadge(loadProgress())
-        setTimeout(() => setPhase('complete'), 900)
+        if (newScore >= TARGET_SCORE) {
+          awardDailyBadge(loadProgress())
+          setTimeout(() => setPhase('complete'), 1400)
+        } else {
+          setTimeout(() => nextQuestion(), 1400)
+        }
       } else {
-        setTimeout(() => nextQuestion(), 900)
+        setPhase('wrong')
+        // user must click "Próxima vogal" manually
       }
-    } else {
-      setPhase('wrong')
-      setTimeout(() => nextQuestion(), 1200)
-    }
+    }, 700)
   }
-
-  // Auto-speak when question loads
-  useEffect(() => {
-    if (phase === 'question' && question) {
-      // already spoken in nextQuestion — nothing to do here
-    }
-  }, [phase, question])
 
   if (voicesLoading) {
     return (
@@ -98,7 +126,7 @@ export default function Quiz() {
     )
   }
 
-  // ── Idle / Start screen ──────────────────────────────────────────────────
+  // ── Idle ─────────────────────────────────────────────────────────────────
   if (phase === 'idle') {
     const alreadyBadged = hasDailyBadge(loadProgress())
     return (
@@ -141,7 +169,7 @@ export default function Quiz() {
     )
   }
 
-  // ── Complete screen ──────────────────────────────────────────────────────
+  // ── Complete ──────────────────────────────────────────────────────────────
   if (phase === 'complete') {
     return (
       <div className="flex flex-col items-center justify-center gap-8 py-16 text-center">
@@ -165,7 +193,9 @@ export default function Quiz() {
     )
   }
 
-  // ── Question screen ──────────────────────────────────────────────────────
+  // ── Question / Answering / Correct / Wrong ────────────────────────────────
+  const isLocked = phase !== 'question'
+
   return (
     <div className="space-y-8 max-w-md mx-auto">
       {/* Header */}
@@ -185,13 +215,14 @@ export default function Quiz() {
         />
       </div>
 
-      {/* Audio prompt */}
+      {/* Card */}
       <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 text-center space-y-5">
         <p className="text-slate-400 text-sm uppercase tracking-widest">Qual vogal você ouviu?</p>
 
         <button
           onClick={() => question && speak(question.correct.char)}
-          className="mx-auto flex items-center gap-3 bg-slate-700 hover:bg-slate-600 text-white rounded-2xl px-8 py-5 text-2xl font-bold transition-colors"
+          disabled={isLocked}
+          className="mx-auto flex items-center gap-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-default text-white rounded-2xl px-8 py-5 transition-colors"
           aria-label="Ouvir novamente"
         >
           <span className="text-3xl">🔊</span>
@@ -202,23 +233,25 @@ export default function Quiz() {
         <div className="grid grid-cols-3 gap-3 pt-2">
           {question?.options.map(opt => {
             const isSelected = selected === opt.char
-            const isCorrect = opt.char === question.correct.char
+            const isCorrectOpt = opt.char === question.correct.char
             let style = 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600'
 
-            if (isSelected) {
-              style = phase === 'correct' || (phase === 'wrong' && isCorrect)
-                ? 'bg-emerald-600 border border-emerald-500 text-white'
-                : 'bg-red-600 border border-red-500 text-white'
-            } else if (phase === 'wrong' && isCorrect) {
+            if (isSelected && (phase === 'correct' || phase === 'answering')) {
+              style = 'bg-emerald-600 border border-emerald-500 text-white scale-105'
+            } else if (isSelected && phase === 'wrong') {
+              style = 'bg-red-600 border border-red-500 text-white'
+            } else if (phase === 'wrong' && isCorrectOpt) {
               style = 'bg-emerald-600/40 border border-emerald-500 text-white'
+            } else if (isLocked) {
+              style = 'bg-slate-700 text-white border border-slate-600 opacity-60'
             }
 
             return (
               <button
                 key={opt.char}
                 onClick={() => handleAnswer(opt.char)}
-                disabled={phase !== 'question'}
-                className={`${style} rounded-xl py-6 text-4xl font-bold transition-colors disabled:cursor-default`}
+                disabled={isLocked}
+                className={`${style} rounded-xl py-6 text-4xl font-bold transition-all disabled:cursor-default`}
               >
                 {opt.char}
               </button>
@@ -226,14 +259,33 @@ export default function Quiz() {
           })}
         </div>
 
-        {/* Feedback */}
-        {phase === 'correct' && (
-          <p className="text-emerald-400 font-semibold text-sm animate-pulse">✓ Correto!</p>
+        {/* Feedback inline */}
+        {(phase === 'correct' || phase === 'answering') && selected === question?.correct.char && (
+          <p className="text-emerald-400 font-semibold text-sm">✓ Correto!</p>
         )}
+
         {phase === 'wrong' && question && (
-          <p className="text-red-400 font-semibold text-sm">
-            ✗ Era <span className="text-white">{question.correct.char}</span> ({question.correct.romanization}) — {question.correct.sound}
-          </p>
+          <div className="space-y-4 pt-1">
+            <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-4 text-left space-y-1">
+              <p className="text-red-400 font-semibold text-sm">✗ Não foi dessa vez</p>
+              <p className="text-slate-300 text-sm">
+                A resposta era <span className="text-white font-bold text-lg">{question.correct.char}</span>
+                {' '}({question.correct.romanization})
+              </p>
+              <p className="text-slate-400 text-sm">{question.correct.sound}</p>
+              {question.correct.examples?.[0] && (
+                <p className="text-slate-500 text-xs pt-1">
+                  Ex: <span className="text-slate-300">{question.correct.examples[0].word}</span> — {question.correct.examples[0].meaning}
+                </p>
+              )}
+            </div>
+            <button
+              onClick={nextQuestion}
+              className="w-full bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-xl py-3 transition-colors"
+            >
+              Próxima vogal →
+            </button>
+          </div>
         )}
       </div>
     </div>
