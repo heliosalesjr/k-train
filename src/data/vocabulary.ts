@@ -17,6 +17,7 @@ export const VOCAB_CATEGORIES = [
   'corpo',
   'natureza',
   'verbos básicos',
+  'cotidiano',
 ] as const
 
 export const VOCABULARY: VocabCard[] = [
@@ -92,4 +93,41 @@ export const VOCABULARY: VocabCard[] = [
   { id: 'dia10', korean: '어제',   romanization: 'eoje',      portuguese: 'ontem',        category: 'dias da semana', example: { sentence: '어제 뭐 했어요?', translation: 'O que você fez ontem?' } },
   { id: 'dia11', korean: '주말',   romanization: 'jumal',     portuguese: 'fim de semana', category: 'dias da semana', example: { sentence: '주말에 뭐 해요?', translation: 'O que você faz no fim de semana?' } },
   { id: 'dia12', korean: '주',     romanization: 'ju',        portuguese: 'semana',       category: 'dias da semana', example: { sentence: '이번 주에 바빠요.', translation: 'Estou ocupado esta semana.' } },
+
+  // Corpo
+  { id: 'corp1', korean: '머리',   romanization: 'meori',    portuguese: 'cabeça',    category: 'corpo' },
+  { id: 'corp2', korean: '눈',     romanization: 'nun',      portuguese: 'olho',      category: 'corpo' },
+  { id: 'corp3', korean: '코',     romanization: 'ko',       portuguese: 'nariz',     category: 'corpo' },
+  { id: 'corp4', korean: '입',     romanization: 'ip',       portuguese: 'boca',      category: 'corpo' },
+  { id: 'corp5', korean: '귀',     romanization: 'gwi',      portuguese: 'orelha',    category: 'corpo' },
+  { id: 'corp6', korean: '손',     romanization: 'son',      portuguese: 'mão',       category: 'corpo' },
+  { id: 'corp7', korean: '발',     romanization: 'bal',      portuguese: 'pé',        category: 'corpo' },
+
+  // Natureza
+  { id: 'nat1',  korean: '하늘',   romanization: 'haneul',   portuguese: 'céu',       category: 'natureza' },
+  { id: 'nat2',  korean: '바다',   romanization: 'bada',     portuguese: 'mar',       category: 'natureza' },
+  { id: 'nat3',  korean: '산',     romanization: 'san',      portuguese: 'montanha',  category: 'natureza' },
+  { id: 'nat4',  korean: '꽃',     romanization: 'kkot',     portuguese: 'flor',      category: 'natureza' },
+  { id: 'nat5',  korean: '나무',   romanization: 'namu',     portuguese: 'árvore',    category: 'natureza' },
+  { id: 'nat6',  korean: '달',     romanization: 'dal',      portuguese: 'lua',       category: 'natureza' },
+  { id: 'nat7',  korean: '해',     romanization: 'hae',      portuguese: 'sol',       category: 'natureza' },
+
+  // Verbos básicos
+  { id: 'vb1',   korean: '가다',   romanization: 'gada',     portuguese: 'ir',        category: 'verbos básicos' },
+  { id: 'vb2',   korean: '오다',   romanization: 'oda',      portuguese: 'vir',       category: 'verbos básicos' },
+  { id: 'vb3',   korean: '자다',   romanization: 'jada',     portuguese: 'dormir',    category: 'verbos básicos' },
+  { id: 'vb4',   korean: '보다',   romanization: 'boda',     portuguese: 'ver',       category: 'verbos básicos' },
+  { id: 'vb5',   korean: '말하다', romanization: 'malhada',  portuguese: 'falar',     category: 'verbos básicos' },
+  { id: 'vb6',   korean: '사랑하다', romanization: 'saranghada', portuguese: 'amar',  category: 'verbos básicos' },
+  { id: 'vb7',   korean: '읽다',   romanization: 'ikda',     portuguese: 'ler',       category: 'verbos básicos' },
+  { id: 'vb8',   korean: '쓰다',   romanization: 'sseuda',   portuguese: 'escrever',  category: 'verbos básicos' },
+  { id: 'vb9',   korean: '알다',   romanization: 'alda',     portuguese: 'saber',     category: 'verbos básicos' },
+
+  // Cotidiano
+  { id: 'cot1',  korean: '집',     romanization: 'jip',      portuguese: 'casa',      category: 'cotidiano' },
+  { id: 'cot2',  korean: '학교',   romanization: 'hakgyo',   portuguese: 'escola',    category: 'cotidiano' },
+  { id: 'cot3',  korean: '책',     romanization: 'chaek',    portuguese: 'livro',     category: 'cotidiano' },
+  { id: 'cot4',  korean: '개',     romanization: 'gae',      portuguese: 'cachorro',  category: 'cotidiano' },
+  { id: 'cot5',  korean: '고양이', romanization: 'goyangi',  portuguese: 'gato',      category: 'cotidiano' },
+  { id: 'cot6',  korean: '사람',   romanization: 'saram',    portuguese: 'pessoa',    category: 'cotidiano' },
 ]
