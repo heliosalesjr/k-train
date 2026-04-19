@@ -9,6 +9,7 @@ import Quiz from './pages/Quiz'
 import QuizVowels from './pages/QuizVowels'
 import QuizWords from './pages/QuizWords'
 import QuizEmoji from './pages/QuizEmoji'
+import QuizEmojiToWord from './pages/QuizEmojiToWord'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="quiz/vogais" element={<QuizVowels />} />
           <Route path="quiz/palavras" element={<QuizWords />} />
           <Route path="quiz/emoji" element={<QuizEmoji />} />
+          <Route path="quiz/emoji-palavra" element={<QuizEmojiToWord />} />
         </Route>
       </Routes>
     </BrowserRouter>

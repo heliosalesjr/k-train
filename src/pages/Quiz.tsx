@@ -26,6 +26,14 @@ const quizzes = [
     desc: 'Veja e ouça a palavra coreana e escolha o emoji que representa seu significado.',
     color: 'from-amber-600 to-amber-800',
   },
+  {
+    to: '/quiz/emoji-palavra',
+    emoji: '🔤',
+    title: '이모지 → 단어',
+    subtitle: 'Emoji → Palavra',
+    desc: 'Veja o emoji, ouça a pronúncia e escolha a grafia coreana correta.',
+    color: 'from-rose-600 to-rose-800',
+  },
 ]
 
 export default function Quiz() {
