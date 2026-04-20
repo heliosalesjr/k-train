@@ -16,21 +16,21 @@ function VocabCardItem({ card }: { card: VocabCard }) {
   }
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden">
+    <div className="bg-stone-800 border border-stone-700 rounded-2xl overflow-hidden">
       <div
-        className="p-5 cursor-pointer hover:bg-slate-750 transition-colors"
+        className="p-5 cursor-pointer hover:bg-stone-750 transition-colors"
         onClick={() => setFlipped(!flipped)}
       >
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="text-3xl font-bold text-white mb-1">{card.korean}</div>
-            <div className="text-violet-400 font-mono text-sm">{card.romanization}</div>
+            <div className="text-red-400 font-mono text-sm">{card.romanization}</div>
           </div>
           <div className="flex items-center gap-2">
             {cardProgress && (
               <span className={`text-xs px-2 py-0.5 rounded-full ${
                 cardProgress.lastRating === 3 ? 'bg-emerald-900/50 text-emerald-400' :
-                cardProgress.lastRating === 2 ? 'bg-sky-900/50 text-sky-400' :
+                cardProgress.lastRating === 2 ? 'bg-teal-900/50 text-teal-400' :
                 'bg-red-900/50 text-red-400'
               }`}>
                 {cardProgress.repetitions}x
@@ -39,7 +39,7 @@ function VocabCardItem({ card }: { card: VocabCard }) {
             {isSupported && hasKoreanVoice && (
               <button
                 onClick={e => { e.stopPropagation(); speak(card.korean) }}
-                className="text-slate-500 hover:text-violet-400 transition-colors text-xl"
+                className="text-stone-500 hover:text-red-400 transition-colors text-xl"
                 title="Ouvir"
               >
                 🔊
@@ -49,17 +49,17 @@ function VocabCardItem({ card }: { card: VocabCard }) {
         </div>
 
         {flipped && (
-          <div className="mt-4 pt-4 border-t border-slate-700 space-y-2">
-            <div className="text-slate-200 text-lg">{card.portuguese}</div>
+          <div className="mt-4 pt-4 border-t border-stone-700 space-y-2">
+            <div className="text-stone-200 text-lg">{card.portuguese}</div>
             {card.example && (
-              <div className="bg-slate-700/50 rounded-xl p-3 space-y-1">
+              <div className="bg-stone-700/50 rounded-xl p-3 space-y-1">
                 <div
-                  className="text-white cursor-pointer hover:text-violet-300 transition-colors"
+                  className="text-white cursor-pointer hover:text-red-300 transition-colors"
                   onClick={e => { e.stopPropagation(); speak(card.example!.sentence) }}
                 >
                   {card.example.sentence}
                 </div>
-                <div className="text-slate-400 text-sm">{card.example.translation}</div>
+                <div className="text-stone-400 text-sm">{card.example.translation}</div>
               </div>
             )}
           </div>
@@ -68,11 +68,11 @@ function VocabCardItem({ card }: { card: VocabCard }) {
 
       {flipped && (
         <div className="px-5 pb-4 flex gap-2">
-          <span className="text-xs text-slate-500 mr-auto self-center">Como foi?</span>
+          <span className="text-xs text-stone-500 mr-auto self-center">Como foi?</span>
           {([
             { rating: 0 as const, label: '✗ Errei', cls: 'bg-red-900/40 hover:bg-red-800 text-red-400' },
             { rating: 1 as const, label: '~ Difícil', cls: 'bg-orange-900/40 hover:bg-orange-800 text-orange-400' },
-            { rating: 2 as const, label: '◯ Ok', cls: 'bg-sky-900/40 hover:bg-sky-800 text-sky-400' },
+            { rating: 2 as const, label: '◯ Ok', cls: 'bg-teal-900/40 hover:bg-teal-800 text-teal-400' },
             { rating: 3 as const, label: '✓ Fácil', cls: 'bg-emerald-900/40 hover:bg-emerald-800 text-emerald-400' },
           ]).map(({ rating, label, cls }) => (
             <button
@@ -111,7 +111,7 @@ export default function Vocabulary() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-white mb-1">어휘 — Vocabulário</h1>
-        <p className="text-slate-400">Clique em uma palavra para ver a tradução. Avalie para treinar.</p>
+        <p className="text-stone-400">Clique em uma palavra para ver a tradução. Avalie para treinar.</p>
       </div>
 
       {!voicesLoading && !hasKoreanVoice && <NoVoiceBanner />}
@@ -123,8 +123,8 @@ export default function Vocabulary() {
             onClick={() => setCategory(cat)}
             className={`px-4 py-1.5 rounded-full text-sm capitalize transition-colors ${
               category === cat
-                ? 'bg-violet-600 text-white'
-                : 'bg-slate-800 text-slate-400 hover:text-white border border-slate-700'
+                ? 'bg-red-600 text-white'
+                : 'bg-stone-800 text-stone-400 hover:text-white border border-stone-700'
             }`}
           >
             {cat}
@@ -133,10 +133,10 @@ export default function Vocabulary() {
       </div>
 
       {note && (
-        <div className="bg-sky-950/40 border border-sky-700/40 rounded-xl p-4 space-y-1">
-          <div className="text-sky-300 font-semibold text-sm">💡 {note.title}</div>
+        <div className="bg-teal-950/40 border border-teal-700/40 rounded-xl p-4 space-y-1">
+          <div className="text-teal-300 font-semibold text-sm">💡 {note.title}</div>
           <p
-            className="text-slate-300 text-sm leading-relaxed"
+            className="text-stone-300 text-sm leading-relaxed"
             dangerouslySetInnerHTML={{ __html: note.content }}
           />
         </div>
@@ -147,7 +147,7 @@ export default function Vocabulary() {
           <VocabCardItem key={card.id} card={card} />
         ))}
         {filtered.length === 0 && (
-          <p className="text-slate-500 col-span-2 text-center py-12">
+          <p className="text-stone-500 col-span-2 text-center py-12">
             Nenhuma palavra nessa categoria ainda.
           </p>
         )}

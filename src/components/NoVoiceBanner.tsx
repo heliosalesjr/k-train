@@ -7,22 +7,22 @@ export default function NoVoiceBanner() {
       <div className="flex items-center gap-2 text-amber-300 font-medium">
         <span>⚠️</span> Voz coreana não encontrada
       </div>
-      <p className="text-slate-400">
+      <p className="text-stone-400">
         Para ouvir a pronúncia real, você precisa instalar uma voz coreana no sistema:
       </p>
-      <ul className="text-slate-400 space-y-1 ml-4">
+      <ul className="text-stone-400 space-y-1 ml-4">
         {isMac && (
           <>
-            <li>• <strong className="text-slate-300">Mac:</strong> Configurações do Sistema → Acessibilidade → Conteúdo falado → Vozes do sistema → Adicionar <em>Yuna</em> (coreano)</li>
+            <li>• <strong className="text-stone-300">Mac:</strong> Configurações do Sistema → Acessibilidade → Conteúdo falado → Vozes do sistema → Adicionar <em>Yuna</em> (coreano)</li>
           </>
         )}
         {isWindows && (
-          <li>• <strong className="text-slate-300">Windows:</strong> Configurações → Hora e idioma → Fala → Adicionar vozes → Coreano</li>
+          <li>• <strong className="text-stone-300">Windows:</strong> Configurações → Hora e idioma → Fala → Adicionar vozes → Coreano</li>
         )}
         {!isMac && !isWindows && (
           <li>• Adicione uma voz coreana (ko-KR) nas configurações de acessibilidade/fala do seu sistema.</li>
         )}
-        <li>• Ou use o <strong className="text-slate-300">Google Chrome</strong> — ele geralmente inclui vozes coreanas sem instalação adicional.</li>
+        <li>• Ou use o <strong className="text-stone-300">Google Chrome</strong> — ele geralmente inclui vozes coreanas sem instalação adicional.</li>
       </ul>
     </div>
   )

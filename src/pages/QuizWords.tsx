@@ -89,7 +89,7 @@ export default function QuizWords() {
   }
 
   if (voicesLoading) {
-    return <div className="flex items-center justify-center h-64 text-slate-400">Carregando vozes…</div>
+    return <div className="flex items-center justify-center h-64 text-stone-400">Carregando vozes…</div>
   }
 
   if (phase === 'idle') {
@@ -97,16 +97,16 @@ export default function QuizWords() {
     return (
       <div className="space-y-8">
         <div className="flex items-center gap-3">
-          <Link to="/quiz" className="text-slate-500 hover:text-slate-300 transition-colors text-sm">← Quiz</Link>
+          <Link to="/quiz" className="text-stone-500 hover:text-stone-300 transition-colors text-sm">← Quiz</Link>
           <h1 className="text-xl font-bold text-white">소리 → 단어</h1>
         </div>
 
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 text-center space-y-5 max-w-md mx-auto">
+        <div className="bg-stone-800/60 border border-stone-700/50 rounded-2xl p-8 text-center space-y-5 max-w-md mx-auto">
           <div className="text-5xl">🎧</div>
           <h2 className="text-xl font-bold text-white">Palavras</h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
+          <p className="text-stone-400 text-sm leading-relaxed">
             Ouça uma palavra coreana e encontre a grafia correta entre as três opções.
-            Acerte <strong className="text-sky-300">{TARGET_SCORE}</strong> e ganhe o badge do dia!
+            Acerte <strong className="text-teal-300">{TARGET_SCORE}</strong> e ganhe o badge do dia!
           </p>
           {alreadyBadged && (
             <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 rounded-full px-4 py-1.5 text-sm text-yellow-300">
@@ -118,7 +118,7 @@ export default function QuizWords() {
               Voz coreana não encontrada. Instale um pacote ko-KR no sistema.
             </p>
           )}
-          <button onClick={startQuiz} className="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl py-3 transition-colors">
+          <button onClick={startQuiz} className="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl py-3 transition-colors">
             Começar
           </button>
         </div>
@@ -132,16 +132,16 @@ export default function QuizWords() {
         <div className="text-7xl animate-bounce">🏅</div>
         <div className="space-y-2">
           <h2 className="text-2xl font-bold text-white">Parabéns!</h2>
-          <p className="text-slate-400">Você acertou {TARGET_SCORE} respostas e ganhou o badge de prática do dia.</p>
+          <p className="text-stone-400">Você acertou {TARGET_SCORE} respostas e ganhou o badge de prática do dia.</p>
           {badgeAlreadyHad && (
-            <p className="text-slate-500 text-sm">(você já tinha o badge de hoje — continue praticando!)</p>
+            <p className="text-stone-500 text-sm">(você já tinha o badge de hoje — continue praticando!)</p>
           )}
         </div>
         <div className="flex gap-3">
-          <Link to="/quiz" className="bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
+          <Link to="/quiz" className="bg-stone-700 hover:bg-stone-600 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
             ← Quizzes
           </Link>
-          <button onClick={startQuiz} className="bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
+          <button onClick={startQuiz} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
             Jogar de novo
           </button>
         </div>
@@ -154,33 +154,33 @@ export default function QuizWords() {
   return (
     <div className="space-y-6 max-w-md mx-auto">
       <div className="flex items-center justify-between">
-        <Link to="/quiz" className="text-slate-500 hover:text-slate-300 transition-colors text-sm">← Quiz</Link>
-        <div className="flex items-center gap-2 bg-sky-900/40 border border-sky-700/50 rounded-full px-4 py-1 text-sm text-sky-300">
+        <Link to="/quiz" className="text-stone-500 hover:text-stone-300 transition-colors text-sm">← Quiz</Link>
+        <div className="flex items-center gap-2 bg-teal-900/40 border border-teal-700/50 rounded-full px-4 py-1 text-sm text-teal-300">
           <span>⭐</span><span>{score} / {TARGET_SCORE}</span>
         </div>
       </div>
 
-      <div className="w-full bg-slate-800 rounded-full h-2">
-        <div className="bg-sky-500 h-2 rounded-full transition-all duration-300" style={{ width: `${(score / TARGET_SCORE) * 100}%` }} />
+      <div className="w-full bg-stone-800 rounded-full h-2">
+        <div className="bg-teal-500 h-2 rounded-full transition-all duration-300" style={{ width: `${(score / TARGET_SCORE) * 100}%` }} />
       </div>
 
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 text-center space-y-5">
-        <p className="text-slate-400 text-sm uppercase tracking-widest">Qual palavra você ouviu?</p>
+      <div className="bg-stone-800/60 border border-stone-700/50 rounded-2xl p-8 text-center space-y-5">
+        <p className="text-stone-400 text-sm uppercase tracking-widest">Qual palavra você ouviu?</p>
 
         <button
           onClick={() => question && speak(question.correct.korean)}
           disabled={isLocked}
-          className="mx-auto flex items-center gap-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-default text-white rounded-2xl px-8 py-5 transition-colors"
+          className="mx-auto flex items-center gap-3 bg-stone-700 hover:bg-stone-600 disabled:opacity-50 disabled:cursor-default text-white rounded-2xl px-8 py-5 transition-colors"
         >
           <span className="text-3xl">🔊</span>
-          <span className="text-slate-300 text-base font-normal">Ouvir novamente</span>
+          <span className="text-stone-300 text-base font-normal">Ouvir novamente</span>
         </button>
 
         <div className="flex flex-col gap-3 pt-2">
           {question?.options.map(opt => {
             const isSelected = selected === opt.id
             const isCorrectOpt = opt.id === question.correct.id
-            let style = 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600'
+            let style = 'bg-stone-700 hover:bg-stone-600 text-white border border-stone-600'
 
             if (isSelected && (phase === 'correct' || phase === 'answering')) {
               style = 'bg-emerald-600 border border-emerald-500 text-white scale-[1.02]'
@@ -189,7 +189,7 @@ export default function QuizWords() {
             } else if (phase === 'wrong' && isCorrectOpt) {
               style = 'bg-emerald-600/40 border border-emerald-500 text-white'
             } else if (isLocked) {
-              style = 'bg-slate-700 text-white border border-slate-600 opacity-60'
+              style = 'bg-stone-700 text-white border border-stone-600 opacity-60'
             }
 
             return (
@@ -209,7 +209,7 @@ export default function QuizWords() {
           <div className="space-y-0.5">
             <p className="text-emerald-400 font-semibold text-sm">✓ Correto!</p>
             {phase === 'correct' && (
-              <p className="text-slate-400 text-sm">{question.correct.portuguese}</p>
+              <p className="text-stone-400 text-sm">{question.correct.portuguese}</p>
             )}
           </div>
         )}
@@ -218,12 +218,12 @@ export default function QuizWords() {
           <div className="space-y-4 pt-1">
             <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-4 text-left space-y-1">
               <p className="text-red-400 font-semibold text-sm">✗ Não foi dessa vez</p>
-              <p className="text-slate-300 text-sm">
+              <p className="text-stone-300 text-sm">
                 A resposta era <span className="text-white font-bold text-xl">{question.correct.korean}</span>
               </p>
-              <p className="text-slate-400 text-sm">{question.correct.romanization}</p>
+              <p className="text-stone-400 text-sm">{question.correct.romanization}</p>
             </div>
-            <button onClick={nextQuestion} className="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl py-3 transition-colors">
+            <button onClick={nextQuestion} className="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl py-3 transition-colors">
               Próxima palavra →
             </button>
           </div>

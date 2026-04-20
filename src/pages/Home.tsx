@@ -7,7 +7,7 @@ const modules = [
     emoji: '🔤',
     title: '한글 (Hangul)',
     desc: 'Aprenda o alfabeto coreano — vogais e consoantes com pronúncia.',
-    color: 'from-violet-600 to-violet-800',
+    color: 'from-red-600 to-red-800',
     tag: 'Começe aqui',
   },
   {
@@ -15,7 +15,7 @@ const modules = [
     emoji: '📖',
     title: '어휘 (Vocabulário)',
     desc: 'Explore palavras por categoria com exemplos e pronúncia.',
-    color: 'from-sky-600 to-sky-800',
+    color: 'from-teal-600 to-teal-800',
     tag: null,
   },
   {
@@ -39,7 +39,7 @@ const modules = [
     emoji: '🎧',
     title: '퀴즈 (Quiz)',
     desc: 'Teste seu ouvido: ouça sons e identifique os caracteres Hangul.',
-    color: 'from-rose-600 to-rose-800',
+    color: 'from-orange-600 to-orange-800',
     tag: 'Novo',
   },
 ]
@@ -53,10 +53,10 @@ export default function Home() {
     <div className="space-y-8">
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-bold text-white">안녕하세요!</h1>
-        <p className="text-slate-400 text-lg">Bem-vindo ao k-train. Vamos aprender coreano.</p>
+        <p className="text-stone-400 text-lg">Bem-vindo ao k-train. Vamos aprender coreano.</p>
         <div className="flex flex-wrap justify-center gap-2 mt-2">
           {cardsStudied > 0 && (
-            <div className="inline-flex items-center gap-2 bg-violet-900/40 border border-violet-700/50 rounded-full px-4 py-1.5 text-sm text-violet-300">
+            <div className="inline-flex items-center gap-2 bg-red-900/40 border border-red-700/50 rounded-full px-4 py-1.5 text-sm text-red-300">
               <span>🔥</span>
               <span>{cardsStudied} {cardsStudied === 1 ? 'carta estudada' : 'cartas estudadas'}</span>
             </div>
@@ -89,20 +89,20 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-        <h3 className="text-slate-300 font-semibold mb-3">Por onde começar?</h3>
-        <ol className="space-y-2 text-sm text-slate-400">
+      <div className="bg-stone-800/50 rounded-2xl p-6 border border-stone-700/50">
+        <h3 className="text-stone-300 font-semibold mb-3">Por onde começar?</h3>
+        <ol className="space-y-2 text-sm text-stone-400">
           <li className="flex gap-3">
-            <span className="text-violet-400 font-bold">1.</span>
-            <span>Aprenda o <strong className="text-slate-300">Hangul</strong> — o alfabeto. São ~30 caracteres e você consegue em poucos dias.</span>
+            <span className="text-red-400 font-bold">1.</span>
+            <span>Aprenda o <strong className="text-stone-300">Hangul</strong> — o alfabeto. São ~30 caracteres e você consegue em poucos dias.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-violet-400 font-bold">2.</span>
-            <span>Explore o <strong className="text-slate-300">Vocabulário</strong> por categorias e ouça a pronúncia.</span>
+            <span className="text-red-400 font-bold">2.</span>
+            <span>Explore o <strong className="text-stone-300">Vocabulário</strong> por categorias e ouça a pronúncia.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-violet-400 font-bold">3.</span>
-            <span>Use os <strong className="text-slate-300">Flashcards</strong> diariamente para revisar o que aprendeu.</span>
+            <span className="text-red-400 font-bold">3.</span>
+            <span>Use os <strong className="text-stone-300">Flashcards</strong> diariamente para revisar o que aprendeu.</span>
           </li>
         </ol>
       </div>

@@ -83,7 +83,7 @@ export default function QuizEmojiToWord() {
   }
 
   if (voicesLoading) {
-    return <div className="flex items-center justify-center h-64 text-slate-400">Carregando vozes…</div>
+    return <div className="flex items-center justify-center h-64 text-stone-400">Carregando vozes…</div>
   }
 
   if (phase === 'idle') {
@@ -91,16 +91,16 @@ export default function QuizEmojiToWord() {
     return (
       <div className="space-y-8">
         <div className="flex items-center gap-3">
-          <Link to="/quiz" className="text-slate-500 hover:text-slate-300 transition-colors text-sm">← Quiz</Link>
+          <Link to="/quiz" className="text-stone-500 hover:text-stone-300 transition-colors text-sm">← Quiz</Link>
           <h1 className="text-xl font-bold text-white">이모지 → 단어</h1>
         </div>
 
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 text-center space-y-5 max-w-md mx-auto">
+        <div className="bg-stone-800/60 border border-stone-700/50 rounded-2xl p-8 text-center space-y-5 max-w-md mx-auto">
           <div className="text-5xl">🔤</div>
           <h2 className="text-xl font-bold text-white">Emoji → Palavra</h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
+          <p className="text-stone-400 text-sm leading-relaxed">
             Veja o emoji, ouça a palavra coreana e escolha a grafia correta.
-            Acerte <strong className="text-rose-300">{TARGET_SCORE}</strong> e ganhe o badge do dia!
+            Acerte <strong className="text-orange-300">{TARGET_SCORE}</strong> e ganhe o badge do dia!
           </p>
           {alreadyBadged && (
             <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 rounded-full px-4 py-1.5 text-sm text-yellow-300">
@@ -112,7 +112,7 @@ export default function QuizEmojiToWord() {
               Voz coreana não encontrada. Instale um pacote ko-KR no sistema.
             </p>
           )}
-          <button onClick={startQuiz} className="w-full bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-xl py-3 transition-colors">
+          <button onClick={startQuiz} className="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl py-3 transition-colors">
             Começar
           </button>
         </div>
@@ -126,16 +126,16 @@ export default function QuizEmojiToWord() {
         <div className="text-7xl animate-bounce">🏅</div>
         <div className="space-y-2">
           <h2 className="text-2xl font-bold text-white">Parabéns!</h2>
-          <p className="text-slate-400">Você acertou {TARGET_SCORE} respostas e ganhou o badge de prática do dia.</p>
+          <p className="text-stone-400">Você acertou {TARGET_SCORE} respostas e ganhou o badge de prática do dia.</p>
           {badgeAlreadyHad && (
-            <p className="text-slate-500 text-sm">(você já tinha o badge de hoje — continue praticando!)</p>
+            <p className="text-stone-500 text-sm">(você já tinha o badge de hoje — continue praticando!)</p>
           )}
         </div>
         <div className="flex gap-3">
-          <Link to="/quiz" className="bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
+          <Link to="/quiz" className="bg-stone-700 hover:bg-stone-600 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
             ← Quizzes
           </Link>
-          <button onClick={startQuiz} className="bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
+          <button onClick={startQuiz} className="bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl px-6 py-3 transition-colors">
             Jogar de novo
           </button>
         </div>
@@ -148,17 +148,17 @@ export default function QuizEmojiToWord() {
   return (
     <div className="space-y-6 max-w-md mx-auto">
       <div className="flex items-center justify-between">
-        <Link to="/quiz" className="text-slate-500 hover:text-slate-300 transition-colors text-sm">← Quiz</Link>
-        <div className="flex items-center gap-2 bg-rose-900/40 border border-rose-700/50 rounded-full px-4 py-1 text-sm text-rose-300">
+        <Link to="/quiz" className="text-stone-500 hover:text-stone-300 transition-colors text-sm">← Quiz</Link>
+        <div className="flex items-center gap-2 bg-orange-900/40 border border-orange-700/50 rounded-full px-4 py-1 text-sm text-orange-300">
           <span>⭐</span><span>{score} / {TARGET_SCORE}</span>
         </div>
       </div>
 
-      <div className="w-full bg-slate-800 rounded-full h-2">
-        <div className="bg-rose-500 h-2 rounded-full transition-all duration-300" style={{ width: `${(score / TARGET_SCORE) * 100}%` }} />
+      <div className="w-full bg-stone-800 rounded-full h-2">
+        <div className="bg-orange-500 h-2 rounded-full transition-all duration-300" style={{ width: `${(score / TARGET_SCORE) * 100}%` }} />
       </div>
 
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 text-center space-y-6">
+      <div className="bg-stone-800/60 border border-stone-700/50 rounded-2xl p-8 text-center space-y-6">
 
         {/* Emoji + botão de som */}
         <div className="space-y-3">
@@ -166,7 +166,7 @@ export default function QuizEmojiToWord() {
           <button
             onClick={() => question && speak(question.correct.korean)}
             disabled={isLocked}
-            className="inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 disabled:opacity-40 disabled:cursor-default text-slate-300 rounded-xl px-5 py-2.5 text-sm transition-colors"
+            className="inline-flex items-center gap-2 bg-stone-700 hover:bg-stone-600 disabled:opacity-40 disabled:cursor-default text-stone-300 rounded-xl px-5 py-2.5 text-sm transition-colors"
           >
             <span className="text-lg">🔊</span>
             Ouvir novamente
@@ -178,7 +178,7 @@ export default function QuizEmojiToWord() {
           {question?.options.map(opt => {
             const isSelected = selected === opt.id
             const isCorrectOpt = opt.id === question.correct.id
-            let style = 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600'
+            let style = 'bg-stone-700 hover:bg-stone-600 text-white border border-stone-600'
 
             if (isSelected && (phase === 'correct' || phase === 'answering')) {
               style = 'bg-emerald-600 border border-emerald-500 text-white scale-[1.02]'
@@ -187,7 +187,7 @@ export default function QuizEmojiToWord() {
             } else if (phase === 'wrong' && isCorrectOpt) {
               style = 'bg-emerald-600/40 border border-emerald-500 text-white'
             } else if (isLocked) {
-              style = 'bg-slate-700 text-white border border-slate-600 opacity-60'
+              style = 'bg-stone-700 text-white border border-stone-600 opacity-60'
             }
 
             return (
@@ -213,11 +213,11 @@ export default function QuizEmojiToWord() {
           <div className="space-y-4">
             <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-4 text-left space-y-1">
               <p className="text-red-400 font-semibold text-sm">✗ Não foi dessa vez</p>
-              <p className="text-slate-300 text-sm">
+              <p className="text-stone-300 text-sm">
                 A resposta era <span className="text-white font-bold text-xl">{question.correct.korean}</span>
               </p>
             </div>
-            <button onClick={nextQuestion} className="w-full bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-xl py-3 transition-colors">
+            <button onClick={nextQuestion} className="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl py-3 transition-colors">
               Próxima →
             </button>
           </div>

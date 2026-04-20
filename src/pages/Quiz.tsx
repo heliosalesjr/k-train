@@ -8,7 +8,7 @@ const quizzes = [
     title: '소리 → 모음',
     subtitle: 'Sons das Vogais',
     desc: 'Ouça uma vogal e identifique o caractere correto. Todas as 21 vogais do Hangul.',
-    color: 'from-violet-600 to-violet-800',
+    color: 'from-red-600 to-red-800',
   },
   {
     to: '/quiz/palavras',
@@ -16,7 +16,7 @@ const quizzes = [
     title: '소리 → 단어',
     subtitle: 'Palavras',
     desc: 'Ouça uma palavra e encontre a grafia coreana correta entre as opções.',
-    color: 'from-sky-600 to-sky-800',
+    color: 'from-teal-600 to-teal-800',
   },
   {
     to: '/quiz/emoji',
@@ -32,7 +32,7 @@ const quizzes = [
     title: '이모지 → 단어',
     subtitle: 'Emoji → Palavra',
     desc: 'Veja o emoji, ouça a pronúncia e escolha a grafia coreana correta.',
-    color: 'from-rose-600 to-rose-800',
+    color: 'from-orange-600 to-orange-800',
   },
 ]
 
@@ -43,7 +43,7 @@ export default function Quiz() {
     <div className="space-y-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold text-white">퀴즈 (Quiz)</h1>
-        <p className="text-slate-400">Treine o reconhecimento auditivo do Hangul.</p>
+        <p className="text-stone-400">Treine o reconhecimento auditivo do Hangul.</p>
         {hasBadge && (
           <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 rounded-full px-4 py-1.5 text-sm text-yellow-300 mt-1">
             <span>🏅</span>
@@ -69,7 +69,7 @@ export default function Quiz() {
         ))}
       </div>
 
-      <p className="text-center text-sm text-slate-500">
+      <p className="text-center text-sm text-stone-500">
         Mais quizzes em breve — consoantes, sílabas e muito mais.
       </p>
     </div>

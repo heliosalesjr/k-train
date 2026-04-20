@@ -49,7 +49,7 @@ export default function Flashcards() {
         <div className="bg-emerald-900/20 border border-emerald-700/50 rounded-2xl p-8 text-center space-y-3">
           <div className="text-5xl">🎉</div>
           <h2 className="text-xl font-bold text-emerald-300">Nenhuma carta para revisar!</h2>
-          <p className="text-slate-400">Você está em dia. Volte mais tarde ou explore o vocabulário para adicionar mais cartas.</p>
+          <p className="text-stone-400">Você está em dia. Volte mais tarde ou explore o vocabulário para adicionar mais cartas.</p>
         </div>
       </div>
     )
@@ -59,13 +59,13 @@ export default function Flashcards() {
     return (
       <div className="space-y-6">
         <h1 className="text-3xl font-bold text-white">복습 — Revisão</h1>
-        <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8 text-center space-y-4">
+        <div className="bg-stone-800 border border-stone-700 rounded-2xl p-8 text-center space-y-4">
           <div className="text-5xl">✅</div>
           <h2 className="text-xl font-bold text-white">Sessão concluída!</h2>
-          <p className="text-slate-400">Você revisou {dueCards.length} {dueCards.length === 1 ? 'carta' : 'cartas'}.</p>
+          <p className="text-stone-400">Você revisou {dueCards.length} {dueCards.length === 1 ? 'carta' : 'cartas'}.</p>
           <button
             onClick={restart}
-            className="bg-violet-600 hover:bg-violet-500 text-white px-8 py-3 rounded-xl font-medium transition-colors"
+            className="bg-red-600 hover:bg-red-500 text-white px-8 py-3 rounded-xl font-medium transition-colors"
           >
             Nova sessão
           </button>
@@ -84,7 +84,7 @@ export default function Flashcards() {
               key={m}
               onClick={() => { setMode(m); setFlipped(false) }}
               className={`text-sm px-3 py-1.5 rounded-lg transition-colors ${
-                mode === m ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-400'
+                mode === m ? 'bg-red-600 text-white' : 'bg-stone-800 text-stone-400'
               }`}
             >
               {m}
@@ -93,11 +93,11 @@ export default function Flashcards() {
         </div>
       </div>
 
-      <div className="text-sm text-slate-500">
+      <div className="text-sm text-stone-500">
         {sessionIndex + 1} / {dueCards.length} cartas
-        <div className="mt-1 bg-slate-800 rounded-full h-1.5">
+        <div className="mt-1 bg-stone-800 rounded-full h-1.5">
           <div
-            className="bg-violet-500 h-1.5 rounded-full transition-all"
+            className="bg-red-500 h-1.5 rounded-full transition-all"
             style={{ width: `${((sessionIndex) / dueCards.length) * 100}%` }}
           />
         </div>
@@ -105,7 +105,7 @@ export default function Flashcards() {
 
       {current && (
         <div
-          className="bg-slate-800 border border-slate-700 rounded-2xl p-8 cursor-pointer hover:border-violet-500/50 transition-colors min-h-48 flex flex-col items-center justify-center text-center gap-4"
+          className="bg-stone-800 border border-stone-700 rounded-2xl p-8 cursor-pointer hover:border-red-500/50 transition-colors min-h-48 flex flex-col items-center justify-center text-center gap-4"
           onClick={() => !flipped && setFlipped(true)}
         >
           {mode === 'ko→pt' ? (
@@ -115,41 +115,41 @@ export default function Flashcards() {
                 {isSupported && (
                   <button
                     onClick={e => { e.stopPropagation(); speak(current.korean) }}
-                    className="text-slate-500 hover:text-violet-400 text-2xl transition-colors"
+                    className="text-stone-500 hover:text-red-400 text-2xl transition-colors"
                   >
                     🔊
                   </button>
                 )}
               </div>
-              <div className="text-violet-400 font-mono">{current.romanization}</div>
-              {!flipped && <p className="text-slate-600 text-sm mt-2">Clique para revelar</p>}
+              <div className="text-red-400 font-mono">{current.romanization}</div>
+              {!flipped && <p className="text-stone-600 text-sm mt-2">Clique para revelar</p>}
               {flipped && (
-                <div className="mt-2 pt-4 border-t border-slate-700 w-full space-y-2">
-                  <div className="text-2xl text-slate-200">{current.portuguese}</div>
+                <div className="mt-2 pt-4 border-t border-stone-700 w-full space-y-2">
+                  <div className="text-2xl text-stone-200">{current.portuguese}</div>
                   {current.example && (
-                    <div className="text-slate-500 text-sm">{current.example.translation}</div>
+                    <div className="text-stone-500 text-sm">{current.example.translation}</div>
                   )}
                 </div>
               )}
             </>
           ) : (
             <>
-              <div className="text-3xl text-slate-200">{current.portuguese}</div>
-              {!flipped && <p className="text-slate-600 text-sm mt-2">Clique para revelar</p>}
+              <div className="text-3xl text-stone-200">{current.portuguese}</div>
+              {!flipped && <p className="text-stone-600 text-sm mt-2">Clique para revelar</p>}
               {flipped && (
-                <div className="mt-2 pt-4 border-t border-slate-700 w-full space-y-2">
+                <div className="mt-2 pt-4 border-t border-stone-700 w-full space-y-2">
                   <div className="flex items-center justify-center gap-3">
                     <span className="text-4xl font-bold text-white">{current.korean}</span>
                     {isSupported && (
                       <button
                         onClick={e => { e.stopPropagation(); speak(current.korean) }}
-                        className="text-slate-500 hover:text-violet-400 text-2xl transition-colors"
+                        className="text-stone-500 hover:text-red-400 text-2xl transition-colors"
                       >
                         🔊
                       </button>
                     )}
                   </div>
-                  <div className="text-violet-400 font-mono">{current.romanization}</div>
+                  <div className="text-red-400 font-mono">{current.romanization}</div>
                 </div>
               )}
             </>
@@ -162,7 +162,7 @@ export default function Flashcards() {
           {([
             { rating: 0 as const, label: 'Errei', sub: 'repetir logo', cls: 'bg-red-900/30 hover:bg-red-800/50 border-red-700/50 text-red-400' },
             { rating: 1 as const, label: 'Difícil', sub: '+1 dia', cls: 'bg-orange-900/30 hover:bg-orange-800/50 border-orange-700/50 text-orange-400' },
-            { rating: 2 as const, label: 'Ok', sub: 'intervalo normal', cls: 'bg-sky-900/30 hover:bg-sky-800/50 border-sky-700/50 text-sky-400' },
+            { rating: 2 as const, label: 'Ok', sub: 'intervalo normal', cls: 'bg-teal-900/30 hover:bg-teal-800/50 border-teal-700/50 text-teal-400' },
             { rating: 3 as const, label: 'Fácil', sub: 'intervalo maior', cls: 'bg-emerald-900/30 hover:bg-emerald-800/50 border-emerald-700/50 text-emerald-400' },
           ]).map(({ rating, label, sub, cls }) => (
             <button

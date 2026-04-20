@@ -11,12 +11,12 @@ const navItems = [
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-10">
+    <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col">
+      <header className="border-b border-stone-800 bg-stone-900/80 backdrop-blur sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-violet-400">K</span>
-            <span className="text-slate-300 font-medium">train</span>
+            <span className="text-2xl font-bold text-red-400">K</span>
+            <span className="text-stone-300 font-medium">train</span>
           </NavLink>
           <nav className="flex gap-1">
             {navItems.slice(1).map(item => (
@@ -26,8 +26,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `flex flex-col items-center px-3 py-1.5 rounded-lg text-xs transition-colors ${
                     isActive
-                      ? 'bg-violet-600 text-white'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                      ? 'bg-red-600 text-white'
+                      : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
                   }`
                 }
               >
@@ -43,7 +43,7 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-slate-800 text-center text-xs text-slate-600 py-4">
+      <footer className="border-t border-stone-800 text-center text-xs text-stone-600 py-4">
         k-train — estude coreano do zero
       </footer>
     </div>
