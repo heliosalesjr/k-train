@@ -6,6 +6,7 @@ const navItems = [
   { to: '/vocab', label: '어휘', sublabel: 'Vocabulário' },
   { to: '/flashcards', label: '복습', sublabel: 'Revisão' },
   { to: '/lessons', label: '수업', sublabel: 'Lições' },
+  { to: '/cheatsheet', label: '요약', sublabel: 'Cheat' },
   { to: '/quiz', label: '퀴즈', sublabel: 'Quiz' },
 ]
 

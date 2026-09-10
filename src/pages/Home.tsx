@@ -40,6 +40,14 @@ const modules = [
     title: '퀴즈 (Quiz)',
     desc: 'Teste seu ouvido: ouça sons e identifique os caracteres Hangul.',
     color: 'from-orange-600 to-orange-800',
+    tag: null,
+  },
+  {
+    to: '/cheatsheet',
+    emoji: '📋',
+    title: '요약 (Cheat Sheet)',
+    desc: 'Referência rápida: saudações, apresentação, estrutura de frases e profissões.',
+    color: 'from-indigo-600 to-indigo-800',
     tag: 'Novo',
   },
 ]

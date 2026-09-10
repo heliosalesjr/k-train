@@ -10,6 +10,7 @@ import QuizVowels from './pages/QuizVowels'
 import QuizWords from './pages/QuizWords'
 import QuizEmoji from './pages/QuizEmoji'
 import QuizEmojiToWord from './pages/QuizEmojiToWord'
+import CheatSheet from './pages/CheatSheet'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="vocab" element={<Vocabulary />} />
           <Route path="flashcards" element={<Flashcards />} />
           <Route path="lessons" element={<Lessons />} />
+          <Route path="cheatsheet" element={<CheatSheet />} />
           <Route path="quiz" element={<Quiz />} />
           <Route path="quiz/vogais" element={<QuizVowels />} />
           <Route path="quiz/palavras" element={<QuizWords />} />
