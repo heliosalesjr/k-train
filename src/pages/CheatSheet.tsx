@@ -22,9 +22,9 @@ function RowsSection({ section }: { section: Extract<CheatSection, { type: 'rows
   return (
     <div className="bg-stone-800/60 border border-stone-700 rounded-2xl overflow-hidden">
       <div className="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_1fr] items-center gap-3 px-5 py-3 text-xs uppercase tracking-wider text-stone-500 border-b border-stone-700">
-        <div>Coreano / Romanização</div>
+        <div>Korean / Romanization</div>
         <div className="hidden sm:block"></div>
-        <div className="text-right sm:text-left">Português</div>
+        <div className="text-right sm:text-left">English</div>
       </div>
       <ul className="divide-y divide-stone-700/70">
         {section.rows.map((row, i) => (
