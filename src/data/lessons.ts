@@ -32,7 +32,7 @@ export interface TableBlock {
 
 export interface ExampleListBlock {
   type: 'example-list'
-  items: { korean: string; romanization: string; portuguese: string }[]
+  items: { korean: string; romanization: string; english: string }[]
 }
 
 export interface VocabHighlightBlock {
@@ -42,9 +42,9 @@ export interface VocabHighlightBlock {
 
 export interface PatternBlock {
   type: 'pattern'
-  label: string   // ex: "Regra"
-  formula: string // ex: "[stem com ㅏ/ㅗ] + 아요"
-  examples: { korean: string; romanization: string; portuguese: string }[]
+  label: string   // e.g. "Rule"
+  formula: string // e.g. "[stem with ㅏ/ㅗ] + 아요"
+  examples: { korean: string; romanization: string; english: string }[]
 }
 
 export type ContentBlock =
@@ -66,244 +66,244 @@ export interface Lesson {
   title: string
   titleKorean: string
   description: string
-  level: 'iniciante' | 'básico' | 'intermediário'
+  level: 'beginner' | 'basic' | 'intermediate'
   sections: LessonSection[]
 }
 
 export const LESSONS: Lesson[] = [
   {
     id: 'days-of-week',
-    title: 'Dias da Semana',
+    title: 'Days of the Week',
     titleKorean: '요일',
-    description: 'Aprenda os 7 dias da semana e descubra sua origem nos elementos clássicos do Leste Asiático.',
-    level: 'iniciante',
+    description: 'Learn the 7 days of the week and discover their origin in the classical elements of East Asia.',
+    level: 'beginner',
     sections: [
       {
-        title: 'O sufixo 요일',
+        title: 'The 요일 suffix',
         blocks: [
           {
             type: 'text',
-            content: 'Em coreano, todos os dias da semana terminam com o sufixo <strong>요일</strong> (yoil), que significa "dia da semana". Você só precisa memorizar o que vem antes.',
+            content: 'In Korean, every day of the week ends with the suffix <strong>요일</strong> (yoil), meaning "day of the week". You only need to memorize what comes before it.',
           },
           {
             type: 'example-list',
             items: [
-              { korean: '월요일', romanization: 'wol-yo-il', portuguese: 'segunda-feira' },
-              { korean: '화요일', romanization: 'hwa-yo-il', portuguese: 'terça-feira' },
-              { korean: '수요일', romanization: 'su-yo-il', portuguese: 'quarta-feira' },
+              { korean: '월요일', romanization: 'wol-yo-il', english: 'Monday' },
+              { korean: '화요일', romanization: 'hwa-yo-il', english: 'Tuesday' },
+              { korean: '수요일', romanization: 'su-yo-il', english: 'Wednesday' },
             ],
           },
           {
             type: 'tip',
-            title: 'Dica de pronúncia',
-            content: 'A sílaba <strong>요</strong> (yo) é a mesma em todos os dias. Uma vez que você aprende o ritmo de "...요일", fica fácil.',
+            title: 'Pronunciation tip',
+            content: 'The syllable <strong>요</strong> (yo) is the same in every day. Once you learn the rhythm of "...요일", it gets easy.',
           },
         ],
       },
       {
-        title: 'A origem nos elementos clássicos',
+        title: 'The origin in the classical elements',
         blocks: [
           {
             type: 'text',
-            content: 'Cada dia da semana corresponde a um dos <strong>7 elementos da cosmologia do Leste Asiático</strong> — os mesmos usados no Japão e China. Isso é uma chave poderosa para memorizar!',
+            content: 'Each day of the week corresponds to one of the <strong>7 elements of East Asian cosmology</strong> — the same ones used in Japan and China. This is a powerful key to memorizing them!',
           },
           {
             type: 'vocab-highlight',
             items: [
-              { char: '일', label: '日 — Sol',     detail: '일요일 → domingo',      color: 'text-amber-400' },
-              { char: '월', label: '月 — Lua',     detail: '월요일 → segunda',      color: 'text-sky-300' },
-              { char: '화', label: '火 — Fogo',    detail: '화요일 → terça',        color: 'text-red-400' },
-              { char: '수', label: '水 — Água',    detail: '수요일 → quarta',       color: 'text-blue-400' },
-              { char: '목', label: '木 — Madeira', detail: '목요일 → quinta',       color: 'text-green-400' },
-              { char: '금', label: '金 — Ouro',    detail: '금요일 → sexta',        color: 'text-yellow-300' },
-              { char: '토', label: '土 — Terra',   detail: '토요일 → sábado',       color: 'text-orange-400' },
+              { char: '일', label: '日 — Sun',   detail: '일요일 → Sunday',    color: 'text-amber-400' },
+              { char: '월', label: '月 — Moon',  detail: '월요일 → Monday',    color: 'text-sky-300' },
+              { char: '화', label: '火 — Fire',  detail: '화요일 → Tuesday',   color: 'text-red-400' },
+              { char: '수', label: '水 — Water', detail: '수요일 → Wednesday', color: 'text-blue-400' },
+              { char: '목', label: '木 — Wood',  detail: '목요일 → Thursday',  color: 'text-green-400' },
+              { char: '금', label: '金 — Gold',  detail: '금요일 → Friday',    color: 'text-yellow-300' },
+              { char: '토', label: '土 — Earth', detail: '토요일 → Saturday',  color: 'text-orange-400' },
             ],
           },
           {
             type: 'tip',
-            title: 'Mnemônico',
-            content: 'Leia só os prefixos em ordem: <strong>일 월 화 수 목 금 토</strong> — Sol, Lua, Fogo, Água, Madeira, Ouro, Terra. É a ordem dos dias começando pelo domingo.',
+            title: 'Mnemonic',
+            content: 'Read just the prefixes in order: <strong>일 월 화 수 목 금 토</strong> — Sun, Moon, Fire, Water, Wood, Gold, Earth. It is the order of the days starting from Sunday.',
           },
         ],
       },
       {
-        title: 'Frases úteis com dias',
+        title: 'Useful phrases with days',
         blocks: [
           {
             type: 'text',
-            content: 'Veja como usar os dias da semana em frases do dia a dia:',
+            content: 'Here is how to use the days of the week in everyday sentences:',
           },
           {
             type: 'table',
-            headers: ['Coreano', 'Romanização', 'Português'],
+            headers: ['Korean', 'Romanization', 'English'],
             rows: [
-              ['오늘 무슨 요일이에요?', 'oneul musun yoil-ieyo?', 'Que dia da semana é hoje?'],
-              ['오늘은 월요일이에요.', 'oneuleun woryoil-ieyo.', 'Hoje é segunda-feira.'],
-              ['내일은 화요일이에요.', 'naeileun hwayoil-ieyo.', 'Amanhã é terça-feira.'],
-              ['금요일에 만나요!', 'geumyoil-e mannayo!', 'Nos encontramos na sexta!'],
-              ['주말에 뭐 해요?', 'jumal-e mwo haeyo?', 'O que você faz no fim de semana?'],
+              ['오늘 무슨 요일이에요?', 'oneul musun yoil-ieyo?', 'What day of the week is it today?'],
+              ['오늘은 월요일이에요.', 'oneuleun woryoil-ieyo.', 'Today is Monday.'],
+              ['내일은 화요일이에요.', 'naeileun hwayoil-ieyo.', 'Tomorrow is Tuesday.'],
+              ['금요일에 만나요!', 'geumyoil-e mannayo!', 'See you on Friday!'],
+              ['주말에 뭐 해요?', 'jumal-e mwo haeyo?', 'What do you do on the weekend?'],
             ],
           },
           {
             type: 'tip',
-            title: 'A partícula 에 (e)',
-            content: '<strong>에</strong> depois de um dia da semana indica "em" ou "no/na". Ex: 금요일<strong>에</strong> = "na sexta". Você vai ver essa partícula o tempo todo em coreano.',
+            title: 'The particle 에 (e)',
+            content: '<strong>에</strong> after a day of the week means "on". Ex: 금요일<strong>에</strong> = "on Friday". You will see this particle everywhere in Korean.',
           },
         ],
       },
       {
-        title: 'Hoje, amanhã e ontem',
+        title: 'Today, tomorrow, and yesterday',
         blocks: [
           {
             type: 'text',
-            content: 'Três palavras essenciais que andam junto com os dias da semana:',
+            content: 'Three essential words that go hand in hand with the days of the week:',
           },
           {
             type: 'example-list',
             items: [
-              { korean: '오늘', romanization: 'oneul', portuguese: 'hoje' },
-              { korean: '내일', romanization: 'naeil', portuguese: 'amanhã' },
-              { korean: '어제', romanization: 'eoje', portuguese: 'ontem' },
+              { korean: '오늘', romanization: 'oneul', english: 'today' },
+              { korean: '내일', romanization: 'naeil', english: 'tomorrow' },
+              { korean: '어제', romanization: 'eoje', english: 'yesterday' },
             ],
           },
           {
             type: 'warning',
-            title: 'Atenção',
-            content: 'Diferente dos dias da semana, <strong>오늘 / 내일 / 어제</strong> não usam o sufixo 요일. São palavras independentes.',
+            title: 'Heads up',
+            content: 'Unlike the days of the week, <strong>오늘 / 내일 / 어제</strong> do not use the 요일 suffix. They are standalone words.',
           },
         ],
       },
     ],
   },
 
-  // ─── Lição 2: Partículas ───────────────────────────────────────────
+  // ─── Lesson 2: Particles ───────────────────────────────────────────
   {
     id: 'particles',
-    title: 'Partículas',
+    title: 'Particles',
     titleKorean: '조사',
-    description: 'Entenda as partículas — as pequenas sílabas que indicam a função de cada palavra na frase.',
-    level: 'iniciante',
+    description: 'Understand particles — the small syllables that mark the role of each word in a sentence.',
+    level: 'beginner',
     sections: [
       {
-        title: 'O que são partículas?',
+        title: 'What are particles?',
         blocks: [
           {
             type: 'text',
-            content: 'Em português, a função das palavras numa frase é indicada pela <strong>ordem</strong>: o sujeito vem antes do verbo, o objeto depois. Em coreano, essa função é indicada por pequenas sílabas chamadas <strong>partículas</strong> (조사), que se juntam ao final das palavras.',
+            content: 'In English, the function of words in a sentence is signaled mostly by <strong>word order</strong>: the subject comes before the verb, the object after. In Korean, that function is marked by small syllables called <strong>particles</strong> (조사), attached to the end of words.',
           },
           {
             type: 'tip',
-            title: 'Por que isso importa?',
-            content: 'Por usar partículas, o coreano tem ordem de palavras mais <strong>flexível</strong> que o português. O que não muda é que o verbo quase sempre vai ao final.',
+            title: 'Why does this matter?',
+            content: 'Because it uses particles, Korean has a much more <strong>flexible</strong> word order than English. What does not change is that the verb almost always goes last.',
           },
           {
             type: 'text',
-            content: 'A maioria das partículas tem <strong>duas formas</strong>: uma para palavras que terminam em consoante, outra para palavras que terminam em vogal. Isso afeta a pronúncia e o fluxo da frase.',
+            content: 'Most particles have <strong>two forms</strong>: one for words that end in a consonant, another for words that end in a vowel. This affects pronunciation and the flow of the sentence.',
           },
         ],
       },
       {
-        title: 'Tópico: 은 / 는',
+        title: 'Topic: 은 / 는',
         blocks: [
           {
             type: 'text',
-            content: '<strong>은/는</strong> (eun/neun) marca o <strong>tópico</strong> da frase — o assunto sobre o qual estamos falando. Funciona como "quanto a..." ou "falando de...". É uma das partículas mais comuns no coreano.',
+            content: '<strong>은/는</strong> (eun/neun) marks the <strong>topic</strong> of the sentence — what we are talking about. It works like "as for..." or "speaking of...". It is one of the most common particles in Korean.',
           },
           {
             type: 'pattern',
-            label: 'Forma',
-            formula: '[palavra terminada em consoante] + 은 · [palavra terminada em vogal] + 는',
+            label: 'Form',
+            formula: '[word ending in consonant] + 은 · [word ending in vowel] + 는',
             examples: [
-              { korean: '저는 학생이에요.', romanization: 'jeoneun haksaeng-ieyo.', portuguese: 'Eu sou estudante.' },
-              { korean: '한국은 아름다워요.', romanization: 'hangug-eun areumdawoyo.', portuguese: 'A Coreia é bonita.' },
-              { korean: '오늘은 월요일이에요.', romanization: 'oneuleun woryoil-ieyo.', portuguese: 'Hoje é segunda-feira.' },
+              { korean: '저는 학생이에요.', romanization: 'jeoneun haksaeng-ieyo.', english: 'I am a student.' },
+              { korean: '한국은 아름다워요.', romanization: 'hangug-eun areumdawoyo.', english: 'Korea is beautiful.' },
+              { korean: '오늘은 월요일이에요.', romanization: 'oneuleun woryoil-ieyo.', english: 'Today is Monday.' },
             ],
           },
           {
             type: 'tip',
             title: '저 vs 나',
-            content: '<strong>저</strong> (jeo) = "eu" formal/polido · <strong>나</strong> (na) = "eu" informal. Com a partícula: 저<strong>는</strong> e 나<strong>는</strong> (ou 난 na fala rápida).',
+            content: '<strong>저</strong> (jeo) = "I" (formal/polite) · <strong>나</strong> (na) = "I" (casual). With the particle: 저<strong>는</strong> and 나<strong>는</strong> (or 난 in fast speech).',
           },
         ],
       },
       {
-        title: 'Sujeito: 이 / 가',
+        title: 'Subject: 이 / 가',
         blocks: [
           {
             type: 'text',
-            content: '<strong>이/가</strong> (i/ga) marca o <strong>sujeito gramatical</strong> — quem pratica a ação. Diferente de 은/는, não carrega ênfase ou contraste: simplesmente identifica quem faz o quê.',
+            content: '<strong>이/가</strong> (i/ga) marks the <strong>grammatical subject</strong> — who performs the action. Unlike 은/는, it does not carry emphasis or contrast: it simply identifies who does what.',
           },
           {
             type: 'pattern',
-            label: 'Forma',
-            formula: '[palavra terminada em consoante] + 이 · [palavra terminada em vogal] + 가',
+            label: 'Form',
+            formula: '[word ending in consonant] + 이 · [word ending in vowel] + 가',
             examples: [
-              { korean: '비가 와요.', romanization: 'bi-ga wayo.', portuguese: 'A chuva cai. / Está chovendo.' },
-              { korean: '고양이가 자요.', romanization: 'goyang-i-ga jayo.', portuguese: 'O gato está dormindo.' },
-              { korean: '친구가 왔어요.', romanization: 'chingu-ga wasseoyo.', portuguese: 'O amigo chegou.' },
+              { korean: '비가 와요.', romanization: 'bi-ga wayo.', english: 'The rain falls. / It is raining.' },
+              { korean: '고양이가 자요.', romanization: 'goyang-i-ga jayo.', english: 'The cat is sleeping.' },
+              { korean: '친구가 왔어요.', romanization: 'chingu-ga wasseoyo.', english: 'A friend arrived.' },
             ],
           },
           {
             type: 'warning',
-            title: '은/는 vs 이/가 — a distinção mais difícil',
-            content: 'Use <strong>이/가</strong> para informação nova, identificação ou ênfase no sujeito. Use <strong>은/는</strong> para o tópico geral, contraste ou informação já conhecida. Ex: <em>"누가 왔어요?" (Quem chegou?) → "제가 왔어요." (Eu cheguei.)</em> — aqui 가 enfatiza "eu, especificamente".',
+            title: '은/는 vs 이/가 — the hardest distinction',
+            content: 'Use <strong>이/가</strong> for new information, identification, or emphasis on the subject. Use <strong>은/는</strong> for the general topic, contrast, or already-known information. Ex: <em>"누가 왔어요?" (Who arrived?) → "제가 왔어요." (I arrived.)</em> — here 가 emphasizes "me, specifically".',
           },
         ],
       },
       {
-        title: 'Objeto: 을 / 를',
+        title: 'Object: 을 / 를',
         blocks: [
           {
             type: 'text',
-            content: '<strong>을/를</strong> (eul/reul) marca o <strong>objeto direto</strong> — o que recebe a ação do verbo. Equivale ao "que" implícito no português: "eu <em>como</em> arroz" → "arroz" é o objeto.',
+            content: '<strong>을/를</strong> (eul/reul) marks the <strong>direct object</strong> — what receives the action of the verb. In English: "I <em>eat</em> rice" → "rice" is the object.',
           },
           {
             type: 'pattern',
-            label: 'Forma',
-            formula: '[palavra terminada em consoante] + 을 · [palavra terminada em vogal] + 를',
+            label: 'Form',
+            formula: '[word ending in consonant] + 을 · [word ending in vowel] + 를',
             examples: [
-              { korean: '밥을 먹어요.', romanization: 'bab-eul meogeoyo.', portuguese: 'Como arroz.' },
-              { korean: '음악을 들어요.', romanization: 'eumag-eul deureoyo.', portuguese: 'Ouço música.' },
-              { korean: '한국어를 공부해요.', romanization: 'hangugeo-reul gongbuhaeyo.', portuguese: 'Estudo coreano.' },
+              { korean: '밥을 먹어요.', romanization: 'bab-eul meogeoyo.', english: 'I eat rice.' },
+              { korean: '음악을 들어요.', romanization: 'eumag-eul deureoyo.', english: 'I listen to music.' },
+              { korean: '한국어를 공부해요.', romanization: 'hangugeo-reul gongbuhaeyo.', english: 'I study Korean.' },
             ],
           },
         ],
       },
       {
-        title: 'Lugar e tempo: 에',
+        title: 'Place and time: 에',
         blocks: [
           {
             type: 'text',
-            content: '<strong>에</strong> (e) é a partícula de <strong>lugar</strong> (onde algo está) e <strong>tempo</strong> (quando algo acontece). É sempre a mesma forma — não muda conforme a terminação da palavra.',
+            content: '<strong>에</strong> (e) is the particle for <strong>place</strong> (where something is) and <strong>time</strong> (when something happens). It is always the same form — it does not change with the word ending.',
           },
           {
             type: 'table',
-            headers: ['Uso', 'Coreano', 'Romanização', 'Português'],
+            headers: ['Use', 'Korean', 'Romanization', 'English'],
             rows: [
-              ['Lugar (estático)', '학교에 있어요.', 'hakgyo-e isseoyo.', 'Estou na escola.'],
-              ['Destino', '학교에 가요.', 'hakgyo-e gayo.', 'Vou para a escola.'],
-              ['Tempo', '월요일에 만나요.', 'woryoil-e mannayo.', 'Nos encontramos na segunda.'],
-              ['Tempo', '세 시에 시작해요.', 'se si-e sijakaeyo.', 'Começa às três horas.'],
+              ['Location (static)', '학교에 있어요.', 'hakgyo-e isseoyo.', 'I am at school.'],
+              ['Destination', '학교에 가요.', 'hakgyo-e gayo.', 'I go to school.'],
+              ['Time', '월요일에 만나요.', 'woryoil-e mannayo.', 'See you on Monday.'],
+              ['Time', '세 시에 시작해요.', 'se si-e sijakaeyo.', 'It starts at 3 o\'clock.'],
             ],
           },
           {
             type: 'tip',
             title: '에서 vs 에',
-            content: '<strong>에서</strong> (eseo) indica onde a ação <em>acontece</em>: "학교에서 공부해요" = Estudo <em>na</em> escola (ação acontecendo lá). <strong>에</strong> indica onde algo <em>está</em> ou o <em>destino</em>: "학교에 있어요" = Estou <em>na</em> escola (localização).',
+            content: '<strong>에서</strong> (eseo) indicates where the action <em>happens</em>: "학교에서 공부해요" = I study <em>at</em> school (the action takes place there). <strong>에</strong> indicates where something <em>is</em> or the <em>destination</em>: "학교에 있어요" = I am <em>at</em> school (location).',
           },
         ],
       },
       {
-        title: 'Resumo das partículas',
+        title: 'Particle summary',
         blocks: [
           {
             type: 'table',
-            headers: ['Partícula', 'Função', 'Após consoante', 'Após vogal'],
+            headers: ['Particle', 'Function', 'After consonant', 'After vowel'],
             rows: [
-              ['Tópico', 'o assunto da frase', '은', '는'],
-              ['Sujeito', 'quem faz a ação', '이', '가'],
-              ['Objeto', 'o que recebe a ação', '을', '를'],
-              ['Lugar/tempo', 'onde / quando', '에', '에'],
+              ['Topic', 'the sentence topic', '은', '는'],
+              ['Subject', 'who does the action', '이', '가'],
+              ['Object', 'what receives the action', '을', '를'],
+              ['Place/time', 'where / when', '에', '에'],
             ],
           },
         ],
@@ -311,110 +311,110 @@ export const LESSONS: Lesson[] = [
     ],
   },
 
-  // ─── Lição 3: Estrutura de frases ─────────────────────────────────
+  // ─── Lesson 3: Sentence structure ─────────────────────────────────
   {
     id: 'sentence-structure',
-    title: 'Estrutura de Frases',
+    title: 'Sentence Structure',
     titleKorean: '문장 구조',
-    description: 'O coreano é uma língua SOV — o verbo vai ao final. Entenda como montar frases do zero.',
-    level: 'básico',
+    description: 'Korean is an SOV language — the verb goes last. Learn how to build sentences from scratch.',
+    level: 'basic',
     sections: [
       {
-        title: 'SOV: o verbo vai ao final',
+        title: 'SOV: the verb goes last',
         blocks: [
           {
             type: 'text',
-            content: 'O português segue a ordem <strong>SVO</strong> (Sujeito → Verbo → Objeto). O coreano segue <strong>SOV</strong> (Sujeito → Objeto → Verbo). Essa é a diferença estrutural mais importante.',
+            content: 'English follows the <strong>SVO</strong> order (Subject → Verb → Object). Korean follows <strong>SOV</strong> (Subject → Object → Verb). This is the most important structural difference.',
           },
           {
             type: 'table',
-            headers: ['Língua', 'Ordem', 'Exemplo'],
+            headers: ['Language', 'Order', 'Example'],
             rows: [
-              ['Português', 'S → V → O', 'Eu como arroz.'],
-              ['Coreano', 'S → O → V', '저는 밥을 먹어요. (Eu arroz como.)'],
+              ['English', 'S → V → O', 'I eat rice.'],
+              ['Korean', 'S → O → V', '저는 밥을 먹어요. (I rice eat.)'],
             ],
           },
           {
             type: 'tip',
-            title: 'Como pensar nisso',
-            content: 'Imagine que em coreano você <strong>guarda o verbo para o final</strong>, como uma revelação. A frase inteira prepara o terreno e o verbo conclui o sentido. Ouvindo coreano, você aprende a esperar o verbo.',
+            title: 'How to think about it',
+            content: 'Imagine that in Korean you <strong>save the verb for the end</strong>, like a reveal. The whole sentence sets the stage and the verb ties the meaning together. Listening to Korean, you learn to wait for the verb.',
           },
         ],
       },
       {
-        title: 'O verbo é o centro da frase',
+        title: 'The verb is the heart of the sentence',
         blocks: [
           {
             type: 'text',
-            content: 'Em coreano, o verbo carrega muita informação: tempo, nível de formalidade e às vezes o sujeito. Por isso ele sempre vem no final — é o ponto de chegada da frase.',
+            content: 'In Korean, the verb carries a lot of information: tense, formality level, and sometimes the subject. That is why it always comes at the end — it is the sentence\'s point of arrival.',
           },
           {
             type: 'example-list',
             items: [
-              { korean: '저는 물을 마셔요.', romanization: 'jeoneun mul-eul masyeoyo.', portuguese: 'Eu bebo água.' },
-              { korean: '친구가 음악을 들어요.', romanization: 'chinguga eumag-eul deureoyo.', portuguese: 'O amigo ouve música.' },
-              { korean: '어머니가 밥을 만들어요.', romanization: 'eomeoniga bab-eul mandeureoyo.', portuguese: 'A mãe faz arroz.' },
+              { korean: '저는 물을 마셔요.', romanization: 'jeoneun mul-eul masyeoyo.', english: 'I drink water.' },
+              { korean: '친구가 음악을 들어요.', romanization: 'chinguga eumag-eul deureoyo.', english: 'My friend listens to music.' },
+              { korean: '어머니가 밥을 만들어요.', romanization: 'eomeoniga bab-eul mandeureoyo.', english: 'Mother makes rice.' },
             ],
           },
         ],
       },
       {
-        title: 'O sujeito frequentemente é omitido',
+        title: 'The subject is often dropped',
         blocks: [
           {
             type: 'text',
-            content: 'Quando o sujeito é óbvio pelo contexto, o coreano simplesmente o omite. Isso é muito comum na fala e nos textos informais.',
+            content: 'When the subject is obvious from context, Korean simply drops it. This is very common in speech and informal writing.',
           },
           {
             type: 'table',
-            headers: ['Com sujeito', 'Sem sujeito', 'Português'],
+            headers: ['With subject', 'Without subject', 'English'],
             rows: [
-              ['저는 가요.', '가요.', 'Vou. / Eu vou.'],
-              ['저는 먹어요.', '먹어요.', 'Como. / Estou comendo.'],
-              ['저는 좋아요.', '좋아요.', 'Estou bem. / É bom.'],
+              ['저는 가요.', '가요.', 'I go. / Going.'],
+              ['저는 먹어요.', '먹어요.', 'I eat. / I am eating.'],
+              ['저는 좋아요.', '좋아요.', 'I am fine. / It is good.'],
             ],
           },
           {
             type: 'tip',
-            title: 'Por que isso acontece?',
-            content: 'O coreano é uma língua de <strong>sujeito nulo</strong>. Se já ficou claro de quem estamos falando, repetir o sujeito soa redundante — como se estivéssemos enfatizando desnecessariamente.',
+            title: 'Why does this happen?',
+            content: 'Korean is a <strong>null-subject language</strong>. If it is already clear who we are talking about, repeating the subject sounds redundant — as if you were emphasizing for no reason.',
           },
         ],
       },
       {
-        title: 'Adjetivos também ficam antes do nome',
+        title: 'Adjectives also come before the noun',
         blocks: [
           {
             type: 'text',
-            content: 'Assim como em português, os adjetivos em coreano vêm <strong>antes</strong> do substantivo que modificam. Mas como verbos e adjetivos se comportam de forma parecida em coreano, um adjetivo no final da frase funciona como verbo.',
+            content: 'Just like in English, adjectives in Korean come <strong>before</strong> the noun they modify. But because verbs and adjectives behave similarly in Korean, an adjective at the end of a sentence acts like a verb.',
           },
           {
             type: 'table',
-            headers: ['Uso', 'Coreano', 'Português'],
+            headers: ['Use', 'Korean', 'English'],
             rows: [
-              ['Adjetivo + substantivo', '예쁜 꽃', 'flor bonita'],
-              ['Adjetivo como verbo', '꽃이 예뻐요.', 'A flor é bonita.'],
-              ['Adjetivo + substantivo', '큰 집', 'casa grande'],
-              ['Adjetivo como verbo', '집이 커요.', 'A casa é grande.'],
+              ['Adjective + noun', '예쁜 꽃', 'a pretty flower'],
+              ['Adjective as verb', '꽃이 예뻐요.', 'The flower is pretty.'],
+              ['Adjective + noun', '큰 집', 'a big house'],
+              ['Adjective as verb', '집이 커요.', 'The house is big.'],
             ],
           },
         ],
       },
       {
-        title: 'Montando sua primeira frase completa',
+        title: 'Building your first full sentence',
         blocks: [
           {
             type: 'text',
-            content: 'Com o que aprendemos até agora, já dá para montar frases reais. O modelo básico é:',
+            content: 'With what we have learned so far, you can already put together real sentences. The basic pattern is:',
           },
           {
             type: 'pattern',
-            label: 'Fórmula',
-            formula: '[sujeito + 은/는] + [objeto + 을/를] + [verbo + 아요/어요]',
+            label: 'Formula',
+            formula: '[subject + 은/는] + [object + 을/를] + [verb + 아요/어요]',
             examples: [
-              { korean: '저는 한국어를 공부해요.', romanization: 'jeoneun hangugeo-reul gongbuhaeyo.', portuguese: 'Eu estudo coreano.' },
-              { korean: '저는 커피를 마셔요.', romanization: 'jeoneun keopi-reul masyeoyo.', portuguese: 'Eu bebo café.' },
-              { korean: '저는 음악을 좋아해요.', romanization: 'jeoneun eumag-eul joahaeyo.', portuguese: 'Eu gosto de música.' },
+              { korean: '저는 한국어를 공부해요.', romanization: 'jeoneun hangugeo-reul gongbuhaeyo.', english: 'I study Korean.' },
+              { korean: '저는 커피를 마셔요.', romanization: 'jeoneun keopi-reul masyeoyo.', english: 'I drink coffee.' },
+              { korean: '저는 음악을 좋아해요.', romanization: 'jeoneun eumag-eul joahaeyo.', english: 'I like music.' },
             ],
           },
         ],
@@ -422,42 +422,42 @@ export const LESSONS: Lesson[] = [
     ],
   },
 
-  // ─── Lição: Números ───────────────────────────────────────────────
+  // ─── Lesson: Numbers ──────────────────────────────────────────────
   {
     id: 'numbers',
-    title: 'Números',
+    title: 'Numbers',
     titleKorean: '숫자',
-    description: 'O coreano tem dois sistemas de contagem — sino-coreano e nativo. Aprenda quando e como usar cada um.',
-    level: 'iniciante',
+    description: 'Korean has two counting systems — Sino-Korean and native. Learn when and how to use each one.',
+    level: 'beginner',
     sections: [
       {
-        title: 'Dois sistemas de números',
+        title: 'Two number systems',
         blocks: [
           {
             type: 'text',
-            content: 'Ao contrário do português, o coreano possui <strong>dois sistemas de numerais distintos</strong>: os <strong>sino-coreanos</strong> (sino = de origem chinesa) e os <strong>nativos coreanos</strong>. Cada sistema é usado em contextos diferentes, e você precisa saber os dois.',
+            content: 'Unlike English, Korean has <strong>two distinct number systems</strong>: the <strong>Sino-Korean</strong> (sino = of Chinese origin) and the <strong>native Korean</strong>. Each system is used in different contexts, and you need to know both.',
           },
           {
             type: 'table',
-            headers: ['Sistema', 'Origem', 'Usado para'],
+            headers: ['System', 'Origin', 'Used for'],
             rows: [
-              ['Sino-coreano (한자어)', 'Chinês', 'Datas, dinheiro, telefone, minutos, andares, meses'],
-              ['Nativo (순우리말)', 'Coreano puro', 'Contar objetos, horas, idade, semanas'],
+              ['Sino-Korean (한자어)', 'Chinese', 'Dates, money, phone numbers, minutes, floors, months'],
+              ['Native (순우리말)', 'Pure Korean', 'Counting objects, hours, age, weeks'],
             ],
           },
           {
             type: 'tip',
-            title: 'Por onde começar?',
-            content: 'Aprenda os sino-coreanos primeiro — eles cobrem mais situações práticas (preços, datas, números de telefone) e seguem um padrão mais simples e regular.',
+            title: 'Where to start?',
+            content: 'Learn Sino-Korean first — it covers more everyday situations (prices, dates, phone numbers) and follows a simpler, more regular pattern.',
           },
         ],
       },
       {
-        title: 'Números sino-coreanos (1–10)',
+        title: 'Sino-Korean numbers (1–10)',
         blocks: [
           {
             type: 'text',
-            content: 'Os números sino-coreanos são regulares e combináveis — iguais à lógica do chinês e japonês. Memorize os de 1 a 10 e você consegue chegar aos milhares.',
+            content: 'Sino-Korean numbers are regular and combinable — the same logic as Chinese and Japanese. Memorize 1 to 10 and you can reach the thousands.',
           },
           {
             type: 'vocab-highlight',
@@ -477,15 +477,15 @@ export const LESSONS: Lesson[] = [
         ],
       },
       {
-        title: 'Sino-coreanos: dezenas, centenas e milhares',
+        title: 'Sino-Korean: tens, hundreds, and thousands',
         blocks: [
           {
             type: 'text',
-            content: 'A lógica é multiplicativa — você combina os números básicos com as unidades. <strong>십(10), 백(100), 천(1.000), 만(10.000)</strong>.',
+            content: 'The logic is multiplicative — you combine the basic numbers with the unit words. <strong>십(10), 백(100), 천(1,000), 만(10,000)</strong>.',
           },
           {
             type: 'table',
-            headers: ['Número', 'Coreano', 'Lógica'],
+            headers: ['Number', 'Korean', 'Logic'],
             rows: [
               ['10',    '십',    '십'],
               ['11',    '십일',  '십 + 일 (10 + 1)'],
@@ -493,38 +493,38 @@ export const LESSONS: Lesson[] = [
               ['35',    '삼십오', '삼십 + 오 (30 + 5)'],
               ['100',   '백',    '백'],
               ['200',   '이백',  '이 + 백 (2 × 100)'],
-              ['1.000', '천',    '천'],
-              ['5.000', '오천',  '오 + 천 (5 × 1.000)'],
-              ['10.000','만',    '만 (unidade única no coreano)'],
-              ['50.000','오만',  '오 + 만 (5 × 10.000)'],
+              ['1,000', '천',    '천'],
+              ['5,000', '오천',  '오 + 천 (5 × 1,000)'],
+              ['10,000','만',    '만 (a unit of its own in Korean)'],
+              ['50,000','오만',  '오 + 만 (5 × 10,000)'],
             ],
           },
           {
             type: 'warning',
-            title: 'Atenção: 만 (10.000)',
-            content: 'O coreano (assim como o chinês e japonês) conta em grupos de <strong>10.000</strong>, não de 1.000. Então "100.000" é <strong>십만</strong> (10 × 10.000), e "1.000.000" é <strong>백만</strong> (100 × 10.000). Isso confunde muito falantes de português — tome cuidado com preços altos!',
+            title: 'Heads up: 만 (10,000)',
+            content: 'Korean (like Chinese and Japanese) counts in groups of <strong>10,000</strong>, not 1,000. So "100,000" is <strong>십만</strong> (10 × 10,000), and "1,000,000" is <strong>백만</strong> (100 × 10,000). This trips up English speakers — watch out with big prices!',
           },
           {
             type: 'tip',
-            title: '일 antes de 백 e 천',
-            content: 'Em coreano, "100" é apenas <strong>백</strong>, não 일백. "1.000" é apenas <strong>천</strong>, não 일천. O 일 só aparece de forma explícita em valores compostos como 일만 (10.000), onde omiti-lo causaria ambiguidade.',
+            title: '일 before 백 and 천',
+            content: 'In Korean, "100" is just <strong>백</strong>, not 일백. "1,000" is just <strong>천</strong>, not 일천. 일 only appears explicitly in compound values like 일만 (10,000), where omitting it would be ambiguous.',
           },
         ],
       },
       {
-        title: 'Números nativos coreanos (1–10)',
+        title: 'Native Korean numbers (1–10)',
         blocks: [
           {
             type: 'text',
-            content: 'Os números nativos têm formas únicas e irregulares — precisam ser memorizados individualmente. Eles são usados para contar objetos e pessoas com contadores (palavras de medida), e para dizer as horas.',
+            content: 'Native numbers have unique, irregular forms — you have to memorize them individually. They are used to count objects and people with counters (measure words), and to tell hours.',
           },
           {
             type: 'vocab-highlight',
             items: [
-              { char: '하나', label: '1 — hana',   detail: '→ 한 antes de contador', color: 'text-emerald-300' },
-              { char: '둘',   label: '2 — dul',    detail: '→ 두 antes de contador',  color: 'text-emerald-300' },
-              { char: '셋',   label: '3 — set',    detail: '→ 세 antes de contador',  color: 'text-emerald-300' },
-              { char: '넷',   label: '4 — net',    detail: '→ 네 antes de contador',  color: 'text-emerald-300' },
+              { char: '하나', label: '1 — hana',   detail: '→ 한 before a counter', color: 'text-emerald-300' },
+              { char: '둘',   label: '2 — dul',    detail: '→ 두 before a counter',  color: 'text-emerald-300' },
+              { char: '셋',   label: '3 — set',    detail: '→ 세 before a counter',  color: 'text-emerald-300' },
+              { char: '넷',   label: '4 — net',    detail: '→ 네 before a counter',  color: 'text-emerald-300' },
               { char: '다섯', label: '5 — daseot',  detail: '',                        color: 'text-emerald-300' },
               { char: '여섯', label: '6 — yeoseot', detail: '',                        color: 'text-emerald-300' },
               { char: '일곱', label: '7 — ilgop',   detail: '',                        color: 'text-emerald-300' },
@@ -535,10 +535,10 @@ export const LESSONS: Lesson[] = [
           },
           {
             type: 'table',
-            headers: ['Dezena', 'Coreano nativo', 'Romanização'],
+            headers: ['Tens', 'Native Korean', 'Romanization'],
             rows: [
               ['10', '열',   'yeol'],
-              ['20', '스물', 'seumul → 스무 antes de contador'],
+              ['20', '스물', 'seumul → 스무 before a counter'],
               ['30', '서른', 'seoreun'],
               ['40', '마흔', 'maheun'],
               ['50', '쉰',   'swin'],
@@ -550,21 +550,21 @@ export const LESSONS: Lesson[] = [
           },
           {
             type: 'warning',
-            title: 'Números nativos só vão até 99',
-            content: 'O sistema nativo não tem equivalente para 100 em diante. A partir de 100, usa-se sempre o sistema sino-coreano. Na prática, os nativos são mais comuns apenas de 1 a 99.',
+            title: 'Native numbers only go up to 99',
+            content: 'The native system has no equivalent from 100 onward. From 100 up you always use Sino-Korean. In practice, native numbers are most common only from 1 to 99.',
           },
         ],
       },
       {
-        title: 'Contadores — o que muda antes de 개, 명, 잔…',
+        title: 'Counters — what changes before 개, 명, 잔…',
         blocks: [
           {
             type: 'text',
-            content: 'Quando você usa números nativos para contar objetos, coloca um <strong>contador</strong> (palavra de medida) depois do número. Os números <strong>1, 2, 3, 4 e 20</strong> têm formas reduzidas antes de qualquer contador.',
+            content: 'When you use native numbers to count objects, you place a <strong>counter</strong> (measure word) after the number. The numbers <strong>1, 2, 3, 4, and 20</strong> have shortened forms before any counter.',
           },
           {
             type: 'table',
-            headers: ['Número', 'Forma isolada', 'Antes de contador'],
+            headers: ['Number', 'Standalone form', 'Before a counter'],
             rows: [
               ['1', '하나', '한'],
               ['2', '둘',   '두'],
@@ -575,192 +575,192 @@ export const LESSONS: Lesson[] = [
           },
           {
             type: 'text',
-            content: 'Os contadores mais comuns que você vai encontrar:',
+            content: 'The most common counters you will run into:',
           },
           {
             type: 'example-list',
             items: [
-              { korean: '개', romanization: 'gae', portuguese: 'objetos genéricos (coisa)' },
-              { korean: '명', romanization: 'myeong', portuguese: 'pessoas' },
-              { korean: '잔', romanization: 'jan', portuguese: 'copos / xícaras' },
-              { korean: '권', romanization: 'gwon', portuguese: 'livros' },
-              { korean: '번', romanization: 'beon', portuguese: 'vezes / número ordinal' },
-              { korean: '살', romanization: 'sal', portuguese: 'anos de idade' },
+              { korean: '개', romanization: 'gae', english: 'generic objects (thing)' },
+              { korean: '명', romanization: 'myeong', english: 'people' },
+              { korean: '잔', romanization: 'jan', english: 'glasses / cups' },
+              { korean: '권', romanization: 'gwon', english: 'books' },
+              { korean: '번', romanization: 'beon', english: 'times / ordinal number' },
+              { korean: '살', romanization: 'sal', english: 'years of age' },
             ],
           },
           {
             type: 'table',
-            headers: ['Coreano', 'Romanização', 'Português'],
+            headers: ['Korean', 'Romanization', 'English'],
             rows: [
-              ['사과 두 개',   'sagwa du gae',       '2 maçãs'],
-              ['학생 세 명',   'haksaeng se myeong', '3 alunos'],
-              ['커피 한 잔',   'keopi han jan',      '1 xícara de café'],
-              ['책 다섯 권',   'chaek daseot gwon',  '5 livros'],
-              ['저는 스물다섯 살이에요.', 'jeoneun seumuldaseot sar-ieyo.', 'Tenho 25 anos.'],
+              ['사과 두 개',   'sagwa du gae',       '2 apples'],
+              ['학생 세 명',   'haksaeng se myeong', '3 students'],
+              ['커피 한 잔',   'keopi han jan',      '1 cup of coffee'],
+              ['책 다섯 권',   'chaek daseot gwon',  '5 books'],
+              ['저는 스물다섯 살이에요.', 'jeoneun seumuldaseot sar-ieyo.', 'I am 25 years old.'],
             ],
           },
         ],
       },
       {
-        title: 'Horas (nativo) e Minutos (sino)',
+        title: 'Hours (native) and Minutes (Sino)',
         blocks: [
           {
             type: 'text',
-            content: 'Para dizer a hora em coreano, você usa os <strong>dois sistemas juntos</strong>: horas com números nativos + 시 (si), e minutos com números sino-coreanos + 분 (bun).',
+            content: 'To tell time in Korean, you use <strong>both systems together</strong>: hours with native numbers + 시 (si), and minutes with Sino-Korean numbers + 분 (bun).',
           },
           {
             type: 'pattern',
-            label: 'Fórmula',
-            formula: '[nativo] 시 [sino-coreano] 분',
+            label: 'Formula',
+            formula: '[native] 시 [Sino-Korean] 분',
             examples: [
-              { korean: '두 시',         romanization: 'du si',          portuguese: '2 horas (em ponto)' },
-              { korean: '세 시 삼십 분', romanization: 'se si samsip bun', portuguese: '3h30' },
-              { korean: '열두 시 오 분', romanization: 'yeoldu si o bun', portuguese: '12h05' },
-              { korean: '몇 시예요?',    romanization: 'myeot siyeyo?',   portuguese: 'Que horas são?' },
+              { korean: '두 시',         romanization: 'du si',          english: '2 o\'clock (sharp)' },
+              { korean: '세 시 삼십 분', romanization: 'se si samsip bun', english: '3:30' },
+              { korean: '열두 시 오 분', romanization: 'yeoldu si o bun', english: '12:05' },
+              { korean: '몇 시예요?',    romanization: 'myeot siyeyo?',   english: 'What time is it?' },
             ],
           },
         ],
       },
       {
-        title: 'Quando usar cada sistema',
+        title: 'When to use each system',
         blocks: [
           {
             type: 'table',
-            headers: ['Contexto', 'Sistema', 'Exemplo'],
+            headers: ['Context', 'System', 'Example'],
             rows: [
-              ['Horas',          'Nativo',        '세 시 (3h)'],
-              ['Minutos',        'Sino-coreano',  '십오 분 (15 min)'],
-              ['Idade',          'Nativo + 살',   '스물두 살 (22 anos)'],
-              ['Dinheiro',       'Sino-coreano',  '오천 원 (₩5.000)'],
-              ['Meses',          'Sino-coreano + 월', '삼월 (março)'],
-              ['Dias do mês',    'Sino-coreano + 일', '이십일 일 (dia 21)'],
-              ['Andares',        'Sino-coreano + 층', '삼 층 (3º andar)'],
-              ['Contar objetos', 'Nativo + contador', '사과 한 개 (1 maçã)'],
-              ['Telefone',       'Sino-coreano',  '공일공 (010…)'],
-              ['Anos',           'Sino-coreano + 년', '이천이십육 년 (2026)'],
+              ['Hours',           'Native',           '세 시 (3 o\'clock)'],
+              ['Minutes',         'Sino-Korean',      '십오 분 (15 min)'],
+              ['Age',             'Native + 살',      '스물두 살 (22 years old)'],
+              ['Money',           'Sino-Korean',      '오천 원 (₩5,000)'],
+              ['Months',          'Sino-Korean + 월', '삼월 (March)'],
+              ['Days of month',   'Sino-Korean + 일', '이십일 일 (the 21st)'],
+              ['Floors',          'Sino-Korean + 층', '삼 층 (3rd floor)'],
+              ['Counting objects','Native + counter', '사과 한 개 (1 apple)'],
+              ['Phone',           'Sino-Korean',      '공일공 (010…)'],
+              ['Years',           'Sino-Korean + 년', '이천이십육 년 (2026)'],
             ],
           },
           {
             type: 'tip',
-            title: 'Zero no telefone',
-            content: 'Para o número 0 em contextos sino-coreanos (telefone, endereço), usa-se <strong>공</strong> (gong) no lugar de 영 (yeong). Ambos significam zero, mas 공 é o padrão em sequências numéricas.',
+            title: 'Zero in phone numbers',
+            content: 'For zero in Sino-Korean contexts (phone, address), use <strong>공</strong> (gong) instead of 영 (yeong). Both mean zero, but 공 is the standard in number sequences.',
           },
         ],
       },
     ],
   },
 
-  // ─── Lição 4: Verbos no presente ──────────────────────────────────
+  // ─── Lesson 4: Present-tense verbs ────────────────────────────────
   {
     id: 'present-tense',
-    title: 'Verbos no Presente',
+    title: 'Present-Tense Verbs',
     titleKorean: '현재형',
-    description: 'Aprenda a conjugar verbos no presente polido com as terminações -아요 e -어요.',
-    level: 'básico',
+    description: 'Learn to conjugate verbs in the polite present with the -아요 and -어요 endings.',
+    level: 'basic',
     sections: [
       {
-        title: 'A forma polida do presente',
+        title: 'The polite present form',
         blocks: [
           {
             type: 'text',
-            content: 'O coreano tem diferentes níveis de formalidade. A forma mais usada no dia a dia é a <strong>forma polida</strong> (존댓말), que termina em <strong>-아요</strong> ou <strong>-어요</strong>. É segura para usar com qualquer pessoa que você não conhece bem.',
+            content: 'Korean has different levels of formality. The one you will use most day to day is the <strong>polite form</strong> (존댓말), which ends in <strong>-아요</strong> or <strong>-어요</strong>. It is safe to use with anyone you do not know well.',
           },
           {
             type: 'tip',
-            title: 'Verbos no dicionário terminam em 다',
-            content: 'No dicionário, os verbos aparecem na forma base terminada em <strong>다</strong>. Ex: 먹<strong>다</strong> (comer), 가<strong>다</strong> (ir). Para conjugar, removemos o 다 e ficamos com o <strong>stem</strong> (raiz): 먹, 가.',
+            title: 'Dictionary verbs end in 다',
+            content: 'In the dictionary, verbs appear in the base form ending in <strong>다</strong>. Ex: 먹<strong>다</strong> (to eat), 가<strong>다</strong> (to go). To conjugate, we drop the 다 and are left with the <strong>stem</strong>: 먹, 가.',
           },
         ],
       },
       {
-        title: 'Regra: qual terminação usar?',
+        title: 'Rule: which ending do you use?',
         blocks: [
           {
             type: 'text',
-            content: 'A escolha entre <strong>아요</strong> e <strong>어요</strong> depende da última vogal do stem do verbo — isso se chama <strong>harmonia vocálica</strong>.',
+            content: 'The choice between <strong>아요</strong> and <strong>어요</strong> depends on the last vowel of the verb stem — this is called <strong>vowel harmony</strong>.',
           },
           {
             type: 'pattern',
-            label: 'Regra 1',
-            formula: 'Stem com última vogal ㅏ ou ㅗ → + 아요',
+            label: 'Rule 1',
+            formula: 'Stem whose last vowel is ㅏ or ㅗ → + 아요',
             examples: [
-              { korean: '가요', romanization: 'gayo', portuguese: 'vai / vou (가다 → 가 + 아요 → 가요)' },
-              { korean: '와요', romanization: 'wayo', portuguese: 'vem (오다 → 오 + 아요 → 와요)' },
-              { korean: '봐요', romanization: 'bwayo', portuguese: 'vê (보다 → 보 + 아요 → 봐요)' },
+              { korean: '가요', romanization: 'gayo', english: 'go / goes (가다 → 가 + 아요 → 가요)' },
+              { korean: '와요', romanization: 'wayo', english: 'comes (오다 → 오 + 아요 → 와요)' },
+              { korean: '봐요', romanization: 'bwayo', english: 'sees (보다 → 보 + 아요 → 봐요)' },
             ],
           },
           {
             type: 'pattern',
-            label: 'Regra 2',
-            formula: 'Stem com qualquer outra vogal → + 어요',
+            label: 'Rule 2',
+            formula: 'Stem with any other vowel → + 어요',
             examples: [
-              { korean: '먹어요', romanization: 'meogeoyo', portuguese: 'come (먹다 → 먹 + 어요)' },
-              { korean: '마셔요', romanization: 'masyeoyo', portuguese: 'bebe (마시다 → 마시 + 어요 → 마셔요)' },
-              { korean: '읽어요', romanization: 'ilgeoyo', portuguese: 'lê (읽다 → 읽 + 어요)' },
+              { korean: '먹어요', romanization: 'meogeoyo', english: 'eats (먹다 → 먹 + 어요)' },
+              { korean: '마셔요', romanization: 'masyeoyo', english: 'drinks (마시다 → 마시 + 어요 → 마셔요)' },
+              { korean: '읽어요', romanization: 'ilgeoyo', english: 'reads (읽다 → 읽 + 어요)' },
             ],
           },
           {
             type: 'pattern',
-            label: 'Regra 3 — 하다',
-            formula: 'Verbos em 하다 (fazer/ser) → 해요 (sempre)',
+            label: 'Rule 3 — 하다',
+            formula: 'Verbs ending in 하다 (to do / to be) → 해요 (always)',
             examples: [
-              { korean: '공부해요', romanization: 'gongbuhaeyo', portuguese: 'estuda (공부하다 → 공부해요)' },
-              { korean: '일해요', romanization: 'ilhaeyo', portuguese: 'trabalha (일하다 → 일해요)' },
-              { korean: '좋아해요', romanization: 'joahaeyo', portuguese: 'gosta (좋아하다 → 좋아해요)' },
+              { korean: '공부해요', romanization: 'gongbuhaeyo', english: 'studies (공부하다 → 공부해요)' },
+              { korean: '일해요', romanization: 'ilhaeyo', english: 'works (일하다 → 일해요)' },
+              { korean: '좋아해요', romanization: 'joahaeyo', english: 'likes (좋아하다 → 좋아해요)' },
             ],
           },
         ],
       },
       {
-        title: 'Verbos comuns conjugados',
+        title: 'Common verbs conjugated',
         blocks: [
           {
             type: 'table',
-            headers: ['Base (다)', 'Stem', 'Presente polido', 'Português'],
+            headers: ['Base (다)', 'Stem', 'Polite present', 'English'],
             rows: [
-              ['가다', '가', '가요', 'ir'],
-              ['오다', '오', '와요', 'vir'],
-              ['먹다', '먹', '먹어요', 'comer'],
-              ['마시다', '마시', '마셔요', 'beber'],
-              ['보다', '보', '봐요', 'ver'],
-              ['듣다', '듣', '들어요', 'ouvir (irregular)'],
-              ['자다', '자', '자요', 'dormir'],
-              ['사다', '사', '사요', 'comprar'],
-              ['읽다', '읽', '읽어요', 'ler'],
-              ['쓰다', '쓰', '써요', 'escrever/usar'],
-              ['공부하다', '공부하', '공부해요', 'estudar'],
-              ['일하다', '일하', '일해요', 'trabalhar'],
-              ['좋아하다', '좋아하', '좋아해요', 'gostar de'],
+              ['가다', '가', '가요', 'to go'],
+              ['오다', '오', '와요', 'to come'],
+              ['먹다', '먹', '먹어요', 'to eat'],
+              ['마시다', '마시', '마셔요', 'to drink'],
+              ['보다', '보', '봐요', 'to see / to watch'],
+              ['듣다', '듣', '들어요', 'to listen (irregular)'],
+              ['자다', '자', '자요', 'to sleep'],
+              ['사다', '사', '사요', 'to buy'],
+              ['읽다', '읽', '읽어요', 'to read'],
+              ['쓰다', '쓰', '써요', 'to write / to use'],
+              ['공부하다', '공부하', '공부해요', 'to study'],
+              ['일하다', '일하', '일해요', 'to work'],
+              ['좋아하다', '좋아하', '좋아해요', 'to like'],
             ],
           },
           {
             type: 'warning',
-            title: 'Verbos irregulares em ㄷ',
-            content: 'Alguns verbos com stem terminado em ㄷ mudam para ㄹ antes de vogal. Ex: 듣<strong>다</strong> (ouvir) → 들<strong>어요</strong> (não 듣어요). Outros como 받다 (receber) são regulares: 받<strong>아요</strong>. Infelizmente essa diferença precisa ser memorizada caso a caso.',
+            title: 'ㄷ-irregular verbs',
+            content: 'Some verbs whose stem ends in ㄷ change to ㄹ before a vowel. Ex: 듣<strong>다</strong> (to listen) → 들<strong>어요</strong> (not 듣어요). Others like 받다 (to receive) are regular: 받<strong>아요</strong>. Unfortunately this difference has to be memorized case by case.',
           },
         ],
       },
       {
-        title: 'Ser e estar: 이다',
+        title: 'To be: 이다',
         blocks: [
           {
             type: 'text',
-            content: 'O verbo "ser/estar" em coreano é <strong>이다</strong>. Ele se comporta diferente dos outros verbos — se junta diretamente ao substantivo.',
+            content: 'The verb "to be" in Korean is <strong>이다</strong>. It behaves differently from other verbs — it attaches directly to the noun.',
           },
           {
             type: 'pattern',
-            label: 'Forma polida',
-            formula: '[nome terminado em consoante] + 이에요 · [nome terminado em vogal] + 예요',
+            label: 'Polite form',
+            formula: '[noun ending in consonant] + 이에요 · [noun ending in vowel] + 예요',
             examples: [
-              { korean: '학생이에요.', romanization: 'haksaeng-ieyo.', portuguese: 'Sou estudante.' },
-              { korean: '의사예요.', romanization: 'uisayo.', portuguese: 'Sou médico(a).' },
-              { korean: '한국 사람이에요.', romanization: 'hanguk saram-ieyo.', portuguese: 'Sou coreano(a).' },
+              { korean: '학생이에요.', romanization: 'haksaeng-ieyo.', english: 'I am a student.' },
+              { korean: '의사예요.', romanization: 'uisayo.', english: 'I am a doctor.' },
+              { korean: '한국 사람이에요.', romanization: 'hanguk saram-ieyo.', english: 'I am Korean.' },
             ],
           },
           {
             type: 'tip',
-            title: 'Negação: 아니에요',
-            content: 'A negação de 이다 é <strong>아니에요</strong> (anieyo) = "não é / não sou". Ex: 학생이 아니에요 = Não sou estudante. Note: aqui usa-se a partícula 이/가 antes de 아니에요.',
+            title: 'Negation: 아니에요',
+            content: 'The negation of 이다 is <strong>아니에요</strong> (anieyo) = "am / is / are not". Ex: 학생이 아니에요 = I am not a student. Note: the particle 이/가 is used before 아니에요.',
           },
         ],
       },

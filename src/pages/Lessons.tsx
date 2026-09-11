@@ -60,7 +60,7 @@ function Block({ block }: { block: ContentBlock }) {
                         <button
                           onClick={() => speak(cell)}
                           className="hover:text-red-300 transition-colors text-left"
-                          title="Ouvir"
+                          title="Listen"
                         >
                           {cell}
                         </button>
@@ -81,12 +81,12 @@ function Block({ block }: { block: ContentBlock }) {
             <div key={i} className="flex items-center gap-3 bg-stone-700/30 rounded-xl px-4 py-3">
               <span className="text-2xl font-bold text-white min-w-[6rem]">{item.korean}</span>
               <span className="text-red-400 font-mono text-sm w-28">{item.romanization}</span>
-              <span className="text-stone-300 text-sm">{item.portuguese}</span>
+              <span className="text-stone-300 text-sm">{item.english}</span>
               {hasKoreanVoice && (
                 <button
                   onClick={() => speak(item.korean)}
                   className="ml-auto text-stone-500 hover:text-red-400 transition-colors text-base"
-                  title="Ouvir"
+                  title="Listen"
                 >
                   🔊
                 </button>
@@ -109,7 +109,7 @@ function Block({ block }: { block: ContentBlock }) {
                   <button
                     onClick={() => speak(item.char + '요일')}
                     className="text-stone-600 hover:text-red-400 transition-colors text-sm mt-1"
-                    title="Ouvir"
+                    title="Listen"
                   >
                     🔊
                   </button>
@@ -142,7 +142,7 @@ function Block({ block }: { block: ContentBlock }) {
                   {ex.korean}
                 </button>
                 <span className="text-red-400 font-mono text-xs w-32 shrink-0">{ex.romanization}</span>
-                <span className="text-stone-400 text-sm">{ex.portuguese}</span>
+                <span className="text-stone-400 text-sm">{ex.english}</span>
                 {hasKoreanVoice && (
                   <button onClick={() => speak(ex.korean)} className="ml-auto text-stone-600 hover:text-red-400 transition-colors shrink-0">🔊</button>
                 )}
@@ -162,7 +162,7 @@ function LessonView({ lesson, onBack }: { lesson: Lesson; onBack: () => void }) 
           onClick={onBack}
           className="text-stone-500 hover:text-stone-300 text-sm mb-4 flex items-center gap-1 transition-colors"
         >
-          ← Voltar
+          ← Back
         </button>
         <div className="flex items-start gap-4">
           <div>
@@ -191,9 +191,9 @@ function LessonView({ lesson, onBack }: { lesson: Lesson; onBack: () => void }) 
 
 function LessonCard({ lesson, onSelect }: { lesson: Lesson; onSelect: () => void }) {
   const levelColor = {
-    iniciante: 'text-emerald-400 bg-emerald-900/30 border-emerald-800/50',
-    básico: 'text-teal-400 bg-teal-900/30 border-teal-800/50',
-    intermediário: 'text-amber-400 bg-amber-900/30 border-amber-800/50',
+    beginner: 'text-emerald-400 bg-emerald-900/30 border-emerald-800/50',
+    basic: 'text-teal-400 bg-teal-900/30 border-teal-800/50',
+    intermediate: 'text-amber-400 bg-amber-900/30 border-amber-800/50',
   }[lesson.level]
 
   return (
@@ -212,7 +212,7 @@ function LessonCard({ lesson, onSelect }: { lesson: Lesson; onSelect: () => void
       </div>
       <p className="text-stone-400 text-sm">{lesson.description}</p>
       <div className="mt-4 text-xs text-stone-600">
-        {lesson.sections.length} seções
+        {lesson.sections.length} sections
       </div>
     </button>
   )
@@ -228,8 +228,8 @@ export default function Lessons() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-1">수업 — Lições</h1>
-        <p className="text-stone-400">Lições estruturadas para entender o coreano além do vocabulário.</p>
+        <h1 className="text-3xl font-bold text-white mb-1">수업 — Lessons</h1>
+        <p className="text-stone-400">Structured lessons to understand Korean beyond vocabulary.</p>
       </div>
 
       <div className="space-y-3">

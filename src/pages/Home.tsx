@@ -29,8 +29,8 @@ const modules = [
   {
     to: '/lessons',
     emoji: '📚',
-    title: '수업 (Lições)',
-    desc: 'Lições estruturadas de gramática e frases essenciais.',
+    title: '수업 (Lessons)',
+    desc: 'Structured lessons on grammar and essential phrases.',
     color: 'from-amber-600 to-amber-800',
     tag: null,
   },
