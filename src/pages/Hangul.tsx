@@ -53,27 +53,27 @@ export default function Hangul() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-1">한글 — O Alfabeto</h1>
+        <h1 className="text-3xl font-bold text-white mb-1">한글 — The Alphabet</h1>
         <p className="text-stone-400">
-          Clique em qualquer caractere para destacá-lo e ouvir a pronúncia.
+          Click any character to highlight it and hear the pronunciation.
         </p>
       </div>
 
       {!voicesLoading && !hasKoreanVoice && <NoVoiceBanner />}
 
       <div className="bg-stone-800/50 border border-stone-700/50 rounded-xl p-4 text-sm text-stone-400">
-        <strong className="text-stone-300">Como funciona o Hangul:</strong> Cada sílaba é escrita em blocos. Um bloco sempre começa com uma consoante (ou ㅇ silencioso) + uma vogal, e opcionalmente uma consoante final. Ex: <span className="text-white font-bold">한</span> = ㅎ + ㅏ + ㄴ
+        <strong className="text-stone-300">How Hangul works:</strong> Each syllable is written in blocks. A block always starts with a consonant (or a silent ㅇ) + a vowel, plus an optional final consonant. Ex: <span className="text-white font-bold">한</span> = ㅎ + ㅏ + ㄴ
       </div>
 
-      {/* Vogais */}
+      {/* Vowels */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-white">
-          모음 <span className="text-stone-400 font-normal text-base">Vogais ({VOWELS.length})</span>
+          모음 <span className="text-stone-400 font-normal text-base">Vowels ({VOWELS.length})</span>
         </h2>
 
         <div>
           <h3 className="text-xs uppercase tracking-widest text-stone-500 mb-3">
-            Básicas ({BASIC_VOWELS.length})
+            Basic ({BASIC_VOWELS.length})
           </h3>
           <div className="grid grid-cols-5 sm:grid-cols-10 gap-3 overflow-visible">
             {BASIC_VOWELS.map(char => (
@@ -89,7 +89,7 @@ export default function Hangul() {
 
         <div>
           <h3 className="text-xs uppercase tracking-widest text-stone-500 mb-3">
-            Compostas / 이중모음 ({COMPOUND_VOWELS.length})
+            Compound / 이중모음 ({COMPOUND_VOWELS.length})
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 overflow-visible">
             {COMPOUND_VOWELS.map(char => (
@@ -104,10 +104,10 @@ export default function Hangul() {
         </div>
       </div>
 
-      {/* Consoantes */}
+      {/* Consonants */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-white">
-          자음 <span className="text-stone-400 font-normal text-base">Consoantes ({CONSONANTS.length})</span>
+          자음 <span className="text-stone-400 font-normal text-base">Consonants ({CONSONANTS.length})</span>
         </h2>
         <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 overflow-visible">
           {CONSONANTS.map(char => (

@@ -6,9 +6,9 @@ const modules = [
     to: '/hangul',
     emoji: '🔤',
     title: '한글 (Hangul)',
-    desc: 'Aprenda o alfabeto coreano — vogais e consoantes com pronúncia.',
+    desc: 'Learn the Korean alphabet — vowels and consonants with pronunciation.',
     color: 'from-red-600 to-red-800',
-    tag: 'Começe aqui',
+    tag: 'Start here',
   },
   {
     to: '/vocab',

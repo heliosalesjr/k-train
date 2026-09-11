@@ -3,62 +3,62 @@ export interface HangulChar {
   romanization: string
   sound: string
   type: 'vowel' | 'consonant'
-  group?: 'basic' | 'compound' // para vogais
-  composition?: string          // ex: "ㅗ + ㅏ" para compostas
+  group?: 'basic' | 'compound' // for vowels
+  composition?: string          // e.g. "ㅗ + ㅏ" for compound vowels
   examples?: { word: string; meaning: string }[]
 }
 
-// 10 vogais básicas
+// 10 basic vowels
 const BASIC_VOWELS: HangulChar[] = [
-  { char: 'ㅏ', romanization: 'a',   sound: 'como "a" em "cama"',                    type: 'vowel', group: 'basic', examples: [{ word: '아이', meaning: 'criança' }] },
-  { char: 'ㅑ', romanization: 'ya',  sound: 'como "ya" em "iaque"',                   type: 'vowel', group: 'basic', examples: [{ word: '야구', meaning: 'beisebol' }] },
-  { char: 'ㅓ', romanization: 'eo',  sound: 'como "ó" em "pó"',                       type: 'vowel', group: 'basic', examples: [{ word: '어머니', meaning: 'mãe' }] },
-  { char: 'ㅕ', romanization: 'yeo', sound: 'como "yó"',                              type: 'vowel', group: 'basic', examples: [{ word: '여자', meaning: 'mulher' }] },
-  { char: 'ㅗ', romanization: 'o',   sound: 'como "ô" em "avô"',                      type: 'vowel', group: 'basic', examples: [{ word: '오리', meaning: 'pato' }] },
-  { char: 'ㅛ', romanization: 'yo',  sound: 'como "yo" em "yoga"',                    type: 'vowel', group: 'basic', examples: [{ word: '요리', meaning: 'culinária' }] },
-  { char: 'ㅜ', romanization: 'u',   sound: 'como "u" em "lua"',                      type: 'vowel', group: 'basic', examples: [{ word: '우유', meaning: 'leite' }] },
-  { char: 'ㅠ', romanization: 'yu',  sound: 'como "yu"',                              type: 'vowel', group: 'basic', examples: [{ word: '유리', meaning: 'vidro' }] },
-  { char: 'ㅡ', romanization: 'eu',  sound: 'vogal central; lábios relaxados, sem arredondamento', type: 'vowel', group: 'basic', examples: [{ word: '으뜸', meaning: 'primeiro/melhor' }] },
-  { char: 'ㅣ', romanization: 'i',   sound: 'como "i" em "ilha"',                     type: 'vowel', group: 'basic', examples: [{ word: '이름', meaning: 'nome' }] },
+  { char: 'ㅏ', romanization: 'a',   sound: 'like "a" in "father"',                        type: 'vowel', group: 'basic', examples: [{ word: '아이', meaning: 'child' }] },
+  { char: 'ㅑ', romanization: 'ya',  sound: 'like "ya" in "yard"',                         type: 'vowel', group: 'basic', examples: [{ word: '야구', meaning: 'baseball' }] },
+  { char: 'ㅓ', romanization: 'eo',  sound: 'like "aw" in "law" (unrounded)',              type: 'vowel', group: 'basic', examples: [{ word: '어머니', meaning: 'mother' }] },
+  { char: 'ㅕ', romanization: 'yeo', sound: 'like "yaw" — the "ya" of "yonder"',           type: 'vowel', group: 'basic', examples: [{ word: '여자', meaning: 'woman' }] },
+  { char: 'ㅗ', romanization: 'o',   sound: 'like "o" in "go"',                            type: 'vowel', group: 'basic', examples: [{ word: '오리', meaning: 'duck' }] },
+  { char: 'ㅛ', romanization: 'yo',  sound: 'like "yo" in "yoga"',                         type: 'vowel', group: 'basic', examples: [{ word: '요리', meaning: 'cooking' }] },
+  { char: 'ㅜ', romanization: 'u',   sound: 'like "oo" in "moon"',                         type: 'vowel', group: 'basic', examples: [{ word: '우유', meaning: 'milk' }] },
+  { char: 'ㅠ', romanization: 'yu',  sound: 'like "you"',                                  type: 'vowel', group: 'basic', examples: [{ word: '유리', meaning: 'glass' }] },
+  { char: 'ㅡ', romanization: 'eu',  sound: 'central vowel; lips relaxed, unrounded',      type: 'vowel', group: 'basic', examples: [{ word: '으뜸', meaning: 'first / best' }] },
+  { char: 'ㅣ', romanization: 'i',   sound: 'like "ee" in "see"',                          type: 'vowel', group: 'basic', examples: [{ word: '이름', meaning: 'name' }] },
 ]
 
-// 11 vogais compostas (이중모음)
+// 11 compound vowels (이중모음)
 const COMPOUND_VOWELS: HangulChar[] = [
-  { char: 'ㅐ', romanization: 'ae',  sound: 'como "é" em "pé"',                       type: 'vowel', group: 'compound', composition: 'ㅏ + ㅣ', examples: [{ word: '개', meaning: 'cachorro' }] },
-  { char: 'ㅒ', romanization: 'yae', sound: 'como "yé" — raro, quase idêntico a ㅖ',  type: 'vowel', group: 'compound', composition: 'ㅑ + ㅣ', examples: [{ word: '얘기', meaning: 'história/conversa' }] },
-  { char: 'ㅔ', romanization: 'e',   sound: 'como "ê" em "você" — praticamente igual a ㅐ no coreano moderno', type: 'vowel', group: 'compound', composition: 'ㅓ + ㅣ', examples: [{ word: '세계', meaning: 'mundo' }] },
-  { char: 'ㅖ', romanization: 'ye',  sound: 'como "yê"',                              type: 'vowel', group: 'compound', composition: 'ㅕ + ㅣ', examples: [{ word: '예쁘다', meaning: 'bonito/a' }] },
-  { char: 'ㅘ', romanization: 'wa',  sound: 'como "wa" em "água"',                    type: 'vowel', group: 'compound', composition: 'ㅗ + ㅏ', examples: [{ word: '과일', meaning: 'fruta' }] },
-  { char: 'ㅙ', romanization: 'wae', sound: 'como "wé" — quase idêntico a ㅚ e ㅞ',   type: 'vowel', group: 'compound', composition: 'ㅗ + ㅐ', examples: [{ word: '왜', meaning: 'por quê' }] },
-  { char: 'ㅚ', romanization: 'oe',  sound: 'como "wé" — no coreano moderno soa igual a ㅙ/ㅞ', type: 'vowel', group: 'compound', composition: 'ㅗ + ㅣ', examples: [{ word: '회사', meaning: 'empresa' }] },
-  { char: 'ㅝ', romanization: 'wo',  sound: 'como "wó"',                              type: 'vowel', group: 'compound', composition: 'ㅜ + ㅓ', examples: [{ word: '뭐', meaning: 'o quê?' }] },
-  { char: 'ㅞ', romanization: 'we',  sound: 'como "wê" — quase idêntico a ㅙ/ㅚ',     type: 'vowel', group: 'compound', composition: 'ㅜ + ㅔ', examples: [{ word: '웨이터', meaning: 'garçom' }] },
-  { char: 'ㅟ', romanization: 'wi',  sound: 'como "wi" em "Wilson"',                  type: 'vowel', group: 'compound', composition: 'ㅜ + ㅣ', examples: [{ word: '위험', meaning: 'perigo' }] },
-  { char: 'ㅢ', romanization: 'ui',  sound: 'ㅡ + ㅣ deslizando; no meio de palavra soa como ㅣ', type: 'vowel', group: 'compound', composition: 'ㅡ + ㅣ', examples: [{ word: '의사', meaning: 'médico' }] },
+  { char: 'ㅐ', romanization: 'ae',  sound: 'like "e" in "bet"',                                                     type: 'vowel', group: 'compound', composition: 'ㅏ + ㅣ', examples: [{ word: '개', meaning: 'dog' }] },
+  { char: 'ㅒ', romanization: 'yae', sound: 'like "ye" in "yes" — rare, nearly identical to ㅖ',                      type: 'vowel', group: 'compound', composition: 'ㅑ + ㅣ', examples: [{ word: '얘기', meaning: 'story / chat' }] },
+  { char: 'ㅔ', romanization: 'e',   sound: 'like "e" in "bed" — practically identical to ㅐ in modern Korean',       type: 'vowel', group: 'compound', composition: 'ㅓ + ㅣ', examples: [{ word: '세계', meaning: 'world' }] },
+  { char: 'ㅖ', romanization: 'ye',  sound: 'like "ye" in "yes"',                                                    type: 'vowel', group: 'compound', composition: 'ㅕ + ㅣ', examples: [{ word: '예쁘다', meaning: 'pretty' }] },
+  { char: 'ㅘ', romanization: 'wa',  sound: 'like "wa" in "water"',                                                  type: 'vowel', group: 'compound', composition: 'ㅗ + ㅏ', examples: [{ word: '과일', meaning: 'fruit' }] },
+  { char: 'ㅙ', romanization: 'wae', sound: 'like "we" in "wet" — almost identical to ㅚ and ㅞ',                     type: 'vowel', group: 'compound', composition: 'ㅗ + ㅐ', examples: [{ word: '왜', meaning: 'why' }] },
+  { char: 'ㅚ', romanization: 'oe',  sound: 'like "we" in "wet" — in modern Korean sounds like ㅙ/ㅞ',                type: 'vowel', group: 'compound', composition: 'ㅗ + ㅣ', examples: [{ word: '회사', meaning: 'company' }] },
+  { char: 'ㅝ', romanization: 'wo',  sound: 'like "wa" in "wander"',                                                 type: 'vowel', group: 'compound', composition: 'ㅜ + ㅓ', examples: [{ word: '뭐', meaning: 'what?' }] },
+  { char: 'ㅞ', romanization: 'we',  sound: 'like "we" in "wet" — almost identical to ㅙ/ㅚ',                         type: 'vowel', group: 'compound', composition: 'ㅜ + ㅔ', examples: [{ word: '웨이터', meaning: 'waiter' }] },
+  { char: 'ㅟ', romanization: 'wi',  sound: 'like "we" in "week"',                                                   type: 'vowel', group: 'compound', composition: 'ㅜ + ㅣ', examples: [{ word: '위험', meaning: 'danger' }] },
+  { char: 'ㅢ', romanization: 'ui',  sound: 'ㅡ + ㅣ gliding; mid-word it sounds like ㅣ',                             type: 'vowel', group: 'compound', composition: 'ㅡ + ㅣ', examples: [{ word: '의사', meaning: 'doctor' }] },
 ]
 
 export const VOWELS: HangulChar[] = [...BASIC_VOWELS, ...COMPOUND_VOWELS]
 
 export const CONSONANTS: HangulChar[] = [
-  { char: 'ㄱ', romanization: 'g/k',  sound: 'como "g" em "gato" (início) ou "k" no final de sílaba', type: 'consonant', examples: [{ word: '가방', meaning: 'bolsa' }] },
-  { char: 'ㄴ', romanization: 'n',    sound: 'como "n" em "nada"',                    type: 'consonant', examples: [{ word: '나무', meaning: 'árvore' }] },
-  { char: 'ㄷ', romanization: 'd/t',  sound: 'como "d" em "dado" (início) ou "t" no final',           type: 'consonant', examples: [{ word: '다리', meaning: 'perna/ponte' }] },
-  { char: 'ㄹ', romanization: 'r/l',  sound: 'entre "r" e "l"; vibrado entre vogais, lateral no final', type: 'consonant', examples: [{ word: '라디오', meaning: 'rádio' }] },
-  { char: 'ㅁ', romanization: 'm',    sound: 'como "m" em "mãe"',                     type: 'consonant', examples: [{ word: '마음', meaning: 'coração/mente' }] },
-  { char: 'ㅂ', romanization: 'b/p',  sound: 'como "b" em "bola" (início) ou "p" no final',           type: 'consonant', examples: [{ word: '바다', meaning: 'mar' }] },
-  { char: 'ㅅ', romanization: 's',    sound: 'como "s" em "sapo"',                    type: 'consonant', examples: [{ word: '사람', meaning: 'pessoa' }] },
-  { char: 'ㅇ', romanization: 'ø/ng', sound: 'silencioso no início da sílaba; "ng" como em "manga" no final', type: 'consonant', examples: [{ word: '아이', meaning: 'criança' }] },
-  { char: 'ㅈ', romanization: 'j',    sound: 'como "j" em "já"',                      type: 'consonant', examples: [{ word: '자동차', meaning: 'carro' }] },
-  { char: 'ㅎ', romanization: 'h',    sound: 'como "h" em "hotel"',                   type: 'consonant', examples: [{ word: '하늘', meaning: 'céu' }] },
-  { char: 'ㅊ', romanization: 'ch',   sound: 'como "tch" em "tchau", aspirado',       type: 'consonant', examples: [{ word: '차', meaning: 'chá/carro' }] },
-  { char: 'ㅋ', romanization: 'k',    sound: 'como "k" aspirado — mais soprado que o nosso "c"', type: 'consonant', examples: [{ word: '커피', meaning: 'café' }] },
-  { char: 'ㅌ', romanization: 't',    sound: 'como "t" aspirado — mais soprado que o nosso "t"', type: 'consonant', examples: [{ word: '태양', meaning: 'sol' }] },
-  { char: 'ㅍ', romanization: 'p',    sound: 'como "p" aspirado — mais soprado que o nosso "p"', type: 'consonant', examples: [{ word: '파도', meaning: 'onda' }] },
-  { char: 'ㄲ', romanization: 'kk',   sound: 'consoante tensa: "k" com tensão na garganta, sem aspiração', type: 'consonant', examples: [{ word: '꽃', meaning: 'flor' }] },
-  { char: 'ㄸ', romanization: 'tt',   sound: 'consoante tensa: "t" com tensão, sem aspiração',    type: 'consonant', examples: [{ word: '따뜻하다', meaning: 'morno/quente' }] },
-  { char: 'ㅃ', romanization: 'pp',   sound: 'consoante tensa: "p" com tensão, sem aspiração',    type: 'consonant', examples: [{ word: '빨리', meaning: 'rapidamente' }] },
-  { char: 'ㅆ', romanization: 'ss',   sound: 'consoante tensa: "s" com tensão, mais forte',       type: 'consonant', examples: [{ word: '씨', meaning: 'semente/Sr./Sra.' }] },
-  { char: 'ㅉ', romanization: 'jj',   sound: 'consoante tensa: "j" com tensão, sem aspiração',    type: 'consonant', examples: [{ word: '짜다', meaning: 'salgado' }] },
+  { char: 'ㄱ', romanization: 'g/k',  sound: 'like "g" in "go" (initial) or "k" at the end of a syllable',  type: 'consonant', examples: [{ word: '가방', meaning: 'bag' }] },
+  { char: 'ㄴ', romanization: 'n',    sound: 'like "n" in "no"',                                            type: 'consonant', examples: [{ word: '나무', meaning: 'tree' }] },
+  { char: 'ㄷ', romanization: 'd/t',  sound: 'like "d" in "day" (initial) or "t" at the end',              type: 'consonant', examples: [{ word: '다리', meaning: 'leg / bridge' }] },
+  { char: 'ㄹ', romanization: 'r/l',  sound: 'between "r" and "l"; flapped between vowels, lateral at the end', type: 'consonant', examples: [{ word: '라디오', meaning: 'radio' }] },
+  { char: 'ㅁ', romanization: 'm',    sound: 'like "m" in "mom"',                                           type: 'consonant', examples: [{ word: '마음', meaning: 'heart / mind' }] },
+  { char: 'ㅂ', romanization: 'b/p',  sound: 'like "b" in "boy" (initial) or "p" at the end',              type: 'consonant', examples: [{ word: '바다', meaning: 'sea' }] },
+  { char: 'ㅅ', romanization: 's',    sound: 'like "s" in "sun"',                                           type: 'consonant', examples: [{ word: '사람', meaning: 'person' }] },
+  { char: 'ㅇ', romanization: 'ø/ng', sound: 'silent at the start of a syllable; "ng" as in "sing" at the end', type: 'consonant', examples: [{ word: '아이', meaning: 'child' }] },
+  { char: 'ㅈ', romanization: 'j',    sound: 'like "j" in "jam"',                                           type: 'consonant', examples: [{ word: '자동차', meaning: 'car' }] },
+  { char: 'ㅎ', romanization: 'h',    sound: 'like "h" in "hotel"',                                         type: 'consonant', examples: [{ word: '하늘', meaning: 'sky' }] },
+  { char: 'ㅊ', romanization: 'ch',   sound: 'like "ch" in "church", aspirated',                            type: 'consonant', examples: [{ word: '차', meaning: 'tea / car' }] },
+  { char: 'ㅋ', romanization: 'k',    sound: 'aspirated "k" — a stronger puff of air than the English "k"', type: 'consonant', examples: [{ word: '커피', meaning: 'coffee' }] },
+  { char: 'ㅌ', romanization: 't',    sound: 'aspirated "t" — a stronger puff of air than the English "t"', type: 'consonant', examples: [{ word: '태양', meaning: 'sun' }] },
+  { char: 'ㅍ', romanization: 'p',    sound: 'aspirated "p" — a stronger puff of air than the English "p"', type: 'consonant', examples: [{ word: '파도', meaning: 'wave' }] },
+  { char: 'ㄲ', romanization: 'kk',   sound: 'tense consonant: "k" with throat tension, no aspiration',     type: 'consonant', examples: [{ word: '꽃', meaning: 'flower' }] },
+  { char: 'ㄸ', romanization: 'tt',   sound: 'tense consonant: "t" with tension, no aspiration',            type: 'consonant', examples: [{ word: '따뜻하다', meaning: 'warm' }] },
+  { char: 'ㅃ', romanization: 'pp',   sound: 'tense consonant: "p" with tension, no aspiration',            type: 'consonant', examples: [{ word: '빨리', meaning: 'quickly' }] },
+  { char: 'ㅆ', romanization: 'ss',   sound: 'tense consonant: "s" with tension, stronger',                 type: 'consonant', examples: [{ word: '씨', meaning: 'seed / Mr. / Ms.' }] },
+  { char: 'ㅉ', romanization: 'jj',   sound: 'tense consonant: "j" with tension, no aspiration',            type: 'consonant', examples: [{ word: '짜다', meaning: 'salty' }] },
 ]
 
 export const ALL_HANGUL = [...CONSONANTS, ...VOWELS]
