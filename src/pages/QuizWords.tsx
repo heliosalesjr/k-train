@@ -209,7 +209,7 @@ export default function QuizWords() {
           <div className="space-y-0.5">
             <p className="text-emerald-400 font-semibold text-sm">✓ Correto!</p>
             {phase === 'correct' && (
-              <p className="text-stone-400 text-sm">{question.correct.portuguese}</p>
+              <p className="text-stone-400 text-sm">{question.correct.english}</p>
             )}
           </div>
         )}
