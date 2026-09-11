@@ -40,7 +40,7 @@ function VocabCardItem({ card }: { card: VocabCard }) {
               <button
                 onClick={e => { e.stopPropagation(); speak(card.korean) }}
                 className="text-stone-500 hover:text-red-400 transition-colors text-xl"
-                title="Ouvir"
+                title="Listen"
               >
                 🔊
               </button>
@@ -68,12 +68,12 @@ function VocabCardItem({ card }: { card: VocabCard }) {
 
       {flipped && (
         <div className="px-5 pb-4 flex gap-2">
-          <span className="text-xs text-stone-500 mr-auto self-center">Como foi?</span>
+          <span className="text-xs text-stone-500 mr-auto self-center">How was it?</span>
           {([
-            { rating: 0 as const, label: '✗ Errei', cls: 'bg-red-900/40 hover:bg-red-800 text-red-400' },
-            { rating: 1 as const, label: '~ Difícil', cls: 'bg-orange-900/40 hover:bg-orange-800 text-orange-400' },
+            { rating: 0 as const, label: '✗ Wrong', cls: 'bg-red-900/40 hover:bg-red-800 text-red-400' },
+            { rating: 1 as const, label: '~ Hard', cls: 'bg-orange-900/40 hover:bg-orange-800 text-orange-400' },
             { rating: 2 as const, label: '◯ Ok', cls: 'bg-teal-900/40 hover:bg-teal-800 text-teal-400' },
-            { rating: 3 as const, label: '✓ Fácil', cls: 'bg-emerald-900/40 hover:bg-emerald-800 text-emerald-400' },
+            { rating: 3 as const, label: '✓ Easy', cls: 'bg-emerald-900/40 hover:bg-emerald-800 text-emerald-400' },
           ]).map(({ rating, label, cls }) => (
             <button
               key={rating}
@@ -90,18 +90,18 @@ function VocabCardItem({ card }: { card: VocabCard }) {
 }
 
 const CATEGORY_NOTES: Partial<Record<string, { title: string; content: string }>> = {
-  números: {
-    title: 'Dois sistemas de numeração',
+  numbers: {
+    title: 'Two number systems',
     content:
-      'O coreano tem <strong>dois sistemas de números</strong> que convivem no dia a dia — e cada um tem seus contextos específicos.<br/><br/>' +
-      '<strong>Sino-coreano</strong> (일 이 삼 사…): originado do chinês. Usado para datas, preços, números de telefone, minutos, andares, e contagens grandes.<br/><br/>' +
-      '<strong>Nativo coreano</strong> (하나 둘 셋 넷…): a forma original da língua. Usado para contar objetos com contadores (1 copo, 2 pessoas…), horas do relógio, e números até 99 em contextos informais.<br/><br/>' +
-      'Exemplo prático: "2 horas e 30 minutos" = <strong>두</strong> 시 <strong>삼십</strong> 분 — hora em nativo (두), minutos em sino-coreano (삼십).',
+      'Korean has <strong>two number systems</strong> that live side by side in everyday life — each with its own specific contexts.<br/><br/>' +
+      '<strong>Sino-Korean</strong> (일 이 삼 사…): borrowed from Chinese. Used for dates, prices, phone numbers, minutes, floors, and large counts.<br/><br/>' +
+      '<strong>Native Korean</strong> (하나 둘 셋 넷…): the language\'s original form. Used to count objects with counters (1 cup, 2 people…), clock hours, and numbers up to 99 in informal contexts.<br/><br/>' +
+      'Practical example: "2 hours and 30 minutes" = <strong>두</strong> 시 <strong>삼십</strong> 분 — hour in native (두), minutes in Sino-Korean (삼십).',
   },
 }
 
 export default function Vocabulary() {
-  const [category, setCategory] = useState<string>('saudações')
+  const [category, setCategory] = useState<string>('greetings')
   const { hasKoreanVoice, voicesLoading } = useSpeech()
 
   const filtered = VOCABULARY.filter(v => v.category === category)
@@ -110,8 +110,8 @@ export default function Vocabulary() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-1">어휘 — Vocabulário</h1>
-        <p className="text-stone-400">Clique em uma palavra para ver a tradução. Avalie para treinar.</p>
+        <h1 className="text-3xl font-bold text-white mb-1">어휘 — Vocabulary</h1>
+        <p className="text-stone-400">Click a word to see the translation. Rate it to train.</p>
       </div>
 
       {!voicesLoading && !hasKoreanVoice && <NoVoiceBanner />}
@@ -148,7 +148,7 @@ export default function Vocabulary() {
         ))}
         {filtered.length === 0 && (
           <p className="text-stone-500 col-span-2 text-center py-12">
-            Nenhuma palavra nessa categoria ainda.
+            No words in this category yet.
           </p>
         )}
       </div>

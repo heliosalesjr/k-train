@@ -13,8 +13,8 @@ const modules = [
   {
     to: '/vocab',
     emoji: '📖',
-    title: '어휘 (Vocabulário)',
-    desc: 'Explore palavras por categoria com exemplos e pronúncia.',
+    title: '어휘 (Vocabulary)',
+    desc: 'Explore words by category with examples and pronunciation.',
     color: 'from-teal-600 to-teal-800',
     tag: null,
   },

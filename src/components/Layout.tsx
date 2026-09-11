@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 const navItems = [
   { to: '/', label: '홈', sublabel: 'Início' },
   { to: '/hangul', label: '한글', sublabel: 'Hangul' },
-  { to: '/vocab', label: '어휘', sublabel: 'Vocabulário' },
+  { to: '/vocab', label: '어휘', sublabel: 'Vocabulary' },
   { to: '/flashcards', label: '복습', sublabel: 'Review' },
   { to: '/lessons', label: '수업', sublabel: 'Lessons' },
   { to: '/cheatsheet', label: '요약', sublabel: 'Cheat' },
