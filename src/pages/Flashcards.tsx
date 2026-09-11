@@ -3,12 +3,12 @@ import { VOCABULARY } from '../data/vocabulary'
 import { loadProgress, updateCardProgress, isDue, type ProgressStore } from '../store/progress'
 import { useSpeech } from '../hooks/useSpeech'
 
-type Mode = 'ko→pt' | 'pt→ko'
+type Mode = 'ko→en' | 'en→ko'
 
 export default function Flashcards() {
   const { speak, isSupported } = useSpeech()
   const [progress, setProgress] = useState<ProgressStore>(() => loadProgress())
-  const [mode, setMode] = useState<Mode>('ko→pt')
+  const [mode, setMode] = useState<Mode>('ko→en')
   const [flipped, setFlipped] = useState(false)
   const [sessionIndex, setSessionIndex] = useState(0)
   const [sessionDone, setSessionDone] = useState(false)
@@ -45,11 +45,11 @@ export default function Flashcards() {
   if (dueCards.length === 0 && !sessionDone) {
     return (
       <div className="space-y-6">
-        <h1 className="text-3xl font-bold text-white">복습 — Revisão</h1>
+        <h1 className="text-3xl font-bold text-white">복습 — Review</h1>
         <div className="bg-emerald-900/20 border border-emerald-700/50 rounded-2xl p-8 text-center space-y-3">
           <div className="text-5xl">🎉</div>
-          <h2 className="text-xl font-bold text-emerald-300">Nenhuma carta para revisar!</h2>
-          <p className="text-stone-400">Você está em dia. Volte mais tarde ou explore o vocabulário para adicionar mais cartas.</p>
+          <h2 className="text-xl font-bold text-emerald-300">No cards to review!</h2>
+          <p className="text-stone-400">You are all caught up. Come back later or explore the vocabulary to add more cards.</p>
         </div>
       </div>
     )
@@ -58,16 +58,16 @@ export default function Flashcards() {
   if (sessionDone) {
     return (
       <div className="space-y-6">
-        <h1 className="text-3xl font-bold text-white">복습 — Revisão</h1>
+        <h1 className="text-3xl font-bold text-white">복습 — Review</h1>
         <div className="bg-stone-800 border border-stone-700 rounded-2xl p-8 text-center space-y-4">
           <div className="text-5xl">✅</div>
-          <h2 className="text-xl font-bold text-white">Sessão concluída!</h2>
-          <p className="text-stone-400">Você revisou {dueCards.length} {dueCards.length === 1 ? 'carta' : 'cartas'}.</p>
+          <h2 className="text-xl font-bold text-white">Session complete!</h2>
+          <p className="text-stone-400">You reviewed {dueCards.length} {dueCards.length === 1 ? 'card' : 'cards'}.</p>
           <button
             onClick={restart}
             className="bg-red-600 hover:bg-red-500 text-white px-8 py-3 rounded-xl font-medium transition-colors"
           >
-            Nova sessão
+            New session
           </button>
         </div>
       </div>
@@ -77,9 +77,9 @@ export default function Flashcards() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">복습 — Revisão</h1>
+        <h1 className="text-3xl font-bold text-white">복습 — Review</h1>
         <div className="flex gap-2">
-          {(['ko→pt', 'pt→ko'] as Mode[]).map(m => (
+          {(['ko→en', 'en→ko'] as Mode[]).map(m => (
             <button
               key={m}
               onClick={() => { setMode(m); setFlipped(false) }}
@@ -94,7 +94,7 @@ export default function Flashcards() {
       </div>
 
       <div className="text-sm text-stone-500">
-        {sessionIndex + 1} / {dueCards.length} cartas
+        {sessionIndex + 1} / {dueCards.length} cards
         <div className="mt-1 bg-stone-800 rounded-full h-1.5">
           <div
             className="bg-red-500 h-1.5 rounded-full transition-all"
@@ -108,7 +108,7 @@ export default function Flashcards() {
           className="bg-stone-800 border border-stone-700 rounded-2xl p-8 cursor-pointer hover:border-red-500/50 transition-colors min-h-48 flex flex-col items-center justify-center text-center gap-4"
           onClick={() => !flipped && setFlipped(true)}
         >
-          {mode === 'ko→pt' ? (
+          {mode === 'ko→en' ? (
             <>
               <div className="flex items-center gap-3">
                 <span className="text-5xl font-bold text-white">{current.korean}</span>
@@ -122,10 +122,10 @@ export default function Flashcards() {
                 )}
               </div>
               <div className="text-red-400 font-mono">{current.romanization}</div>
-              {!flipped && <p className="text-stone-600 text-sm mt-2">Clique para revelar</p>}
+              {!flipped && <p className="text-stone-600 text-sm mt-2">Click to reveal</p>}
               {flipped && (
                 <div className="mt-2 pt-4 border-t border-stone-700 w-full space-y-2">
-                  <div className="text-2xl text-stone-200">{current.portuguese}</div>
+                  <div className="text-2xl text-stone-200">{current.english}</div>
                   {current.example && (
                     <div className="text-stone-500 text-sm">{current.example.translation}</div>
                   )}
@@ -134,8 +134,8 @@ export default function Flashcards() {
             </>
           ) : (
             <>
-              <div className="text-3xl text-stone-200">{current.portuguese}</div>
-              {!flipped && <p className="text-stone-600 text-sm mt-2">Clique para revelar</p>}
+              <div className="text-3xl text-stone-200">{current.english}</div>
+              {!flipped && <p className="text-stone-600 text-sm mt-2">Click to reveal</p>}
               {flipped && (
                 <div className="mt-2 pt-4 border-t border-stone-700 w-full space-y-2">
                   <div className="flex items-center justify-center gap-3">
@@ -160,10 +160,10 @@ export default function Flashcards() {
       {flipped && (
         <div className="grid grid-cols-4 gap-3">
           {([
-            { rating: 0 as const, label: 'Errei', sub: 'repetir logo', cls: 'bg-red-900/30 hover:bg-red-800/50 border-red-700/50 text-red-400' },
-            { rating: 1 as const, label: 'Difícil', sub: '+1 dia', cls: 'bg-orange-900/30 hover:bg-orange-800/50 border-orange-700/50 text-orange-400' },
-            { rating: 2 as const, label: 'Ok', sub: 'intervalo normal', cls: 'bg-teal-900/30 hover:bg-teal-800/50 border-teal-700/50 text-teal-400' },
-            { rating: 3 as const, label: 'Fácil', sub: 'intervalo maior', cls: 'bg-emerald-900/30 hover:bg-emerald-800/50 border-emerald-700/50 text-emerald-400' },
+            { rating: 0 as const, label: 'Wrong', sub: 'repeat soon', cls: 'bg-red-900/30 hover:bg-red-800/50 border-red-700/50 text-red-400' },
+            { rating: 1 as const, label: 'Hard', sub: '+1 day', cls: 'bg-orange-900/30 hover:bg-orange-800/50 border-orange-700/50 text-orange-400' },
+            { rating: 2 as const, label: 'Ok', sub: 'normal interval', cls: 'bg-teal-900/30 hover:bg-teal-800/50 border-teal-700/50 text-teal-400' },
+            { rating: 3 as const, label: 'Easy', sub: 'longer interval', cls: 'bg-emerald-900/30 hover:bg-emerald-800/50 border-emerald-700/50 text-emerald-400' },
           ]).map(({ rating, label, sub, cls }) => (
             <button
               key={rating}

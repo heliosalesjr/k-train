@@ -21,8 +21,8 @@ const modules = [
   {
     to: '/flashcards',
     emoji: '🔁',
-    title: '복습 (Revisão)',
-    desc: 'Flashcards com repetição espaçada para fixar o que aprendeu.',
+    title: '복습 (Review)',
+    desc: 'Spaced-repetition flashcards to lock in what you learned.',
     color: 'from-emerald-600 to-emerald-800',
     tag: null,
   },

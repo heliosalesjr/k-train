@@ -50,7 +50,7 @@ function VocabCardItem({ card }: { card: VocabCard }) {
 
         {flipped && (
           <div className="mt-4 pt-4 border-t border-stone-700 space-y-2">
-            <div className="text-stone-200 text-lg">{card.portuguese}</div>
+            <div className="text-stone-200 text-lg">{card.english}</div>
             {card.example && (
               <div className="bg-stone-700/50 rounded-xl p-3 space-y-1">
                 <div
